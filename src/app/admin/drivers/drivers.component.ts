@@ -34,6 +34,7 @@ export class DriversComponent implements OnInit {
     this.getDrivers()
   }
 
+  hidden = true;
   getDrivers(){
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/admin/driver", { headers: { Authorization: AuthStr } })
@@ -66,13 +67,9 @@ export class DriversComponent implements OnInit {
     document.getElementById("table").style.display = "none";
   }
 
-  deleteDriver(id){
-    console.log(id);
-    axios.delete("https://btal-ride.herokuapp.com/api/admin/driver/"+id).then(res => {
-      this.router.navigate(['/admin']);
-    }).catch(err => {
-      console.log(err)
-    })
+  deleteDriver(driver: Driver){
+    this.drivers.splice(this.drivers.indexOf(driver), 1);
+    this.hidden = !this.hidden;
   }
 
 }

@@ -1,60 +1,13 @@
-<div class="d-flex justify-content-center">
-    <div class="spinner-border" role="status" style="display: none;" id="spinner">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-<button class="btn btn-primary mb-2" type="submit" (click) ="addDriver()">Add Driver</button>
-<br>
-<div class="container">
-    <div id="table" class="container p-5 border shadow p-3 rounded w-75 h-50 mb-3" style="display:none">
-    <form name="form" [formGroup]="form" (ngSubmit)="addnewDriver()" >
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                    <label for="firstNnme">First Name: </label>
-                    <input  type="text"  formControlName ="firstname" id="firstname" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                    <label for="lastname">Last Name: </label>
-                    <input  type="text"  formControlName="lastname" id="lastname" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="lastname">Address: </label>
-            <input  type="text"  formControlName="address" id="lastname" class="form-control">
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                    <label for="contact_number">Contact Number: </label>
-                    <input type="text"  formControlName="contact_number" id="contact_number" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                    <label for="license">License ID: </label>
-                    <input  type="text"  formControlName="license" id="license" class="form-control">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                    <label for="status">Status: </label>
-                    <input type="text"  formControlName="status" id="status" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                    <label for="salary">Salary: </label>
-                    <input  type="text"  formControlName="salary" id="salary" class="form-control">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <a type="button" (click)="close()" class="btn btn-secondary form-control" >Cancel</a>
-            </div>
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-success form-control" >Add Driver</button>
-            </div>
-        </div>
-    </form>
-    </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="!hidden">
+    <strong>Successfully Deleted!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 
 
+<button class="btn btn-primary" type="submit" routerLink="admin/add-driver">Add Driver</button>
+<app-add-driver></app-add-driver>
 <table class="table p-3">
     <thead class="thead">
         <tr>
@@ -74,7 +27,7 @@
             <td>{{driver.status}}</td>
             <td>{{driver.salary}}</td>
             <td>
-                <button (click) = "UpdateDriver(driver.id)" class="btn btn-primary">Update</button>
+                <button (click)="UpdateDriver(driver)" class="btn btn-primary">Update</button>
             </td>
             <td><button (click)="deleteDriver(driver.id)" class="btn btn-danger">Delete</button></td>
         </tr>

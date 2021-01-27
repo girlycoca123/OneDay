@@ -1,8 +1,10 @@
-<div class="d-flex justify-content-center">
-    <div class="spinner-border" role="status" style="display: none;" id="spinner">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="!hidden">
+    <strong>Successfully Deleted!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
 <table class="table">
     <thead class="thead">
         <tr>
@@ -18,9 +20,9 @@
             <td>{{user.firstname }} {{user.lastname}}</td>
             <th scope="row">{{user.contact_number}}</th>
             <td>{{user.address}}</td>
-            <td>{{user.email_address}}</td>
-            <td><button class="btn btn-primary" (click)="update(user.id)">Update Status</button>
-            <button class="btn btn-danger" style="margin-left:20px;"(click) = "deleteUser(bus.id)">Delete Client</button></td>
+            <td><button class="btn btn-primary" (click)="update(id)">Update</button>
+                <button class="btn btn-danger" style="margin-left:20px;" (click)="deleteUser(id, user)">Delete</button>
+            </td>
         </tr>
     </tbody>
 </table>

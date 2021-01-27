@@ -20,6 +20,8 @@ constructor(
     this.getBookings()
   }
 
+  hidden = true;
+
   getBookings(){
     document.getElementById('spinner').style.display = "block";
     this.bookingService.getBookings().subscribe(bookings => {
@@ -31,7 +33,7 @@ constructor(
 
   deleteBooking(booking: Booking){
     this.bookings.splice(this.bookings.indexOf(booking), 1);
-    alert ("Succesfully Deleted!")
+    this.hidden = !this.hidden;
   }
 
   // viewUpdatePersonForm(booking: Booking){

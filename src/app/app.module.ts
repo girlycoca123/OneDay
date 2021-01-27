@@ -21,16 +21,6 @@ import { UserProfileComponent } from './admin/user-profile/user-profile.componen
 import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {MatIconModule} from '@angular/material/icon';
-import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
-import { UpdateUserComponent } from './admin/update-user/update-user.component';
-import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
-import { AboutComponent } from './client/about/about.component';
-import { HistoryComponent } from './client/history/history.component';
-// import {MatIconModule} from '@angular/material/icon';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -49,12 +39,6 @@ import { HistoryComponent } from './client/history/history.component';
     DriversComponent,
     UserProfileComponent,
     UpdateBusComponent,
-    BusSpecsComponent,
-    UpdateUserComponent,
-    UpdateDriverComponent,
-    AboutComponent,
-    HistoryComponent,
-  
   ],
   imports: [
     BrowserModule,

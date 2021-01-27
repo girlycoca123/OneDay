@@ -18,6 +18,8 @@ import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
 import { AddBusComponent } from './admin/add-bus/add-bus.component';
+import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
+import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 import { AboutComponent } from './client/about/about.component';
 
 
@@ -41,10 +43,8 @@ const routes: Routes = [
   { path: 'drivers', component: DriversComponent},
   { path: 'user-profile', component: UserProfileComponent},
   {path:'update-bus/:id', component:UpdateBusComponent},
-  {path:'update-user/:id', component:UpdateUserComponent},
-  {path:'update-driver/:id', component:UpdateDriverComponent},
-  {path:'add-bus', component:AddBusComponent},
-
+  { path: 'admin/bus_specs', component: BusSpecsComponent},
+  { path: 'admin/add-driver', component: AddDriverComponent}
   ]
 },
   ]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl,Validators } from '@angular/forms';
 import { BusesService } from 'src/app/services/buses.service';
+import { Bus } from '../../services/models';  
 import axios from 'axios';
 import { Router } from '@angular/router';
 
@@ -27,12 +28,14 @@ export class AddBusComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  addBus(){
+  addBus(bus){
+    this.busesService.addBus(bus);
     console.log(this.form.value);
     axios.post("https://btal-ride.herokuapp.com/api/admin/bus", this.form.value).then(res => {
       this.router.navigate(['/admin/dashboard']);
     }).catch(err => {
       console.log(err)
     })
+    this.router.navigate(['admin/buses']);
   }
 }

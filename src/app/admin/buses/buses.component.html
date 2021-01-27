@@ -16,24 +16,22 @@
                 </div>
               </div>
         </div>
-    </div>   
-    <!-- Gallery -->
-
+    </div>
     <br>
     <div class="container">
         <div class="row">
             <div class="card col-md-4 shadow p-3 rounded" *ngFor="let bus of buses">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">View</a>
-                            <a class="dropdown-item" (click) = "update(bus.id)">Edit</a>
-                            <a class="dropdown-item"  (click) = "delete(bus.id)">Delete</a>
-                            <!-- <a class="dropdown-item" (click) = "delete(bus.id)">Delete</a> -->
-                        </div>
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">View</a>
+                        <a class="dropdown-item" (click)="update(bus.id)">Edit</a>
+                        <a class="dropdown-item"><button mat-button (click)="delDialog()">Delete</button></a>
+                        <!-- <a class="dropdown-item" (click) = "delete(bus.id)">Delete</a> -->
+                    </div>
                 </div>
                 <div class="single-img" data-toggle="modal" data-target="#bus1">
-                    <img src="{{bus.img_url}}" alt="bus1" width="250px" >
+                    <img src="{{bus.img_url}}" alt="bus1" width="250px">
                     <h5>{{bus.bus_name}}</h5>
                 </div>
             </div>
