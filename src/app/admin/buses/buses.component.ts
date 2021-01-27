@@ -39,7 +39,7 @@ this.hidden = !this.hidden;
 
   getBuses(){
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.get("https://btal-ride.herokuapp.com/api/admin/bus", { headers: { Authorization: AuthStr } })
+    axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
       .then(response => {
         
      console.log(response);

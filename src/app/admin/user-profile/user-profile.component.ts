@@ -26,26 +26,28 @@ export class UserProfileComponent implements OnInit {
   getUsers()
     {
       const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-      axios.get("https://btal-ride.herokuapp.com/api/admin/client", { headers: { Authorization: AuthStr } })
+      axios.get("https://btal-ride.herokuapp.com/api/admin-client", { headers: { Authorization: AuthStr } })
         .then(response => {
+          this.users = response.data;
+          console.log(this.users);
           
-       console.log(response.data);
         })
       .catch((error) => {
        console.log('error ' + error);
         });
+
       }
   
-  update(id){
-    this.router.navigate(['/admin/update-user/'+id]);
-  }
+  // update(id){
+  //   this.router.navigate(['/admin/update-user/'+id]);
+  // }
 
-  deleteUser(id){
-    axios.delete("https://btal-ride.herokuapp.com/api/admin/client/"+id).then(res => {
-      return this.router.navigate(['/admin']);
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+  // deleteUser(id){
+  //   axios.delete("https://btal-ride.herokuapp.com/api/admin/client/"+id).then(res => {
+  //     return this.router.navigate(['/admin']);
+  //   }).catch(err => {
+  //     console.log(err)
+  //   })
+  // }
 
 }

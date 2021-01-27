@@ -5,6 +5,7 @@ import { Router, ActivatedRoute  } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import axios from 'axios';
 
+
 @Component({
   selector: 'app-user-home',
   templateUrl: './user-home.component.html',
@@ -44,10 +45,9 @@ export class UserHomeComponent implements OnInit {
   }
  
   getBuses(){
-    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('access_token')); 
-    axios.get("https://btal-ride.herokuapp.com/api/admin/bus", { headers: { Authorization: AuthStr } })
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
       .then(response => {
-        
      console.log(response.data);
       })
     .catch((error) => {
@@ -62,7 +62,10 @@ export class UserHomeComponent implements OnInit {
             console.log(err)
         })
   }
-
+  logout(){
+    window.localStorage.removeItem('client_token');
+    this.router.navigate(['/']);
+  }
   history(){
     this.router.navigate(['client/history']);
   }

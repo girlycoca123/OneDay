@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import axios from 'axios';
 import { BookingsService } from '../../services/bookings.service';
 import { Booking } from '../../services/models';
 // import { Router } from '@angular/router';
@@ -23,12 +24,17 @@ constructor(
   hidden = true;
 
   getBookings(){
-    document.getElementById('spinner').style.display = "block";
-    this.bookingService.getBookings().subscribe(bookings => {
-      this.bookings = bookings as Booking[];
-      document.getElementById('spinner').style.display = "none";
-      console.log(bookings);
-    })
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin-booking", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        this.bookings = response.data;
+        console.log(this.bookings);
+        
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
+
   }
 
   deleteBooking(booking: Booking){

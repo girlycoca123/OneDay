@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import axios from 'axios';
 
 
 @Injectable({
@@ -8,12 +8,21 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BookingsService {
 
-  private url = "http://btal-ride.herokuapp.com/api/client/booking";
+  private url = "https://btal-ride.herokuapp.com/api/admin-booking";
 
   constructor(private http: HttpClient) { }
 
   getBookings(){
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get(this.url, { headers: { Authorization: AuthStr } })
+      .then(response => {
     return this.http.get(this.url);
+        
+     console.log(response);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
 
   updateBooking(){
@@ -21,7 +30,6 @@ export class BookingsService {
   }
 
  
-
   // getBookingIndex(booking: Booking){
   //   return this.bookings.indexOf(booking);
   // }

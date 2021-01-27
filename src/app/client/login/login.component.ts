@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       console.log(res.data);
       window.localStorage.setItem('client_token',res.data.access_token);
     document.getElementById('spinner').style.display ="none";
-      return this.router.navigate(['/admin/user-profile']);
+      return this.router.navigate(['/userhome']);
     }).catch(err => {
       console.log(err)
     })

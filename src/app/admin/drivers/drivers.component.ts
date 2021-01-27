@@ -37,16 +37,19 @@ export class DriversComponent implements OnInit {
   hidden = true;
   getDrivers(){
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.get("https://btal-ride.herokuapp.com/api/admin/driver", { headers: { Authorization: AuthStr } })
+    axios.get("https://btal-ride.herokuapp.com/api/admin-driver", { headers: { Authorization: AuthStr } })
       .then(response => {
+        this.drivers = response.data;
+        console.log(this.drivers);
         
-     console.log(response.data);
       })
     .catch((error) => {
      console.log('error ' + error);
       });
 
   }
+
+
   UpdateDriver(id){
     this.router.navigate(['/admin/update-driver/'+id]);
   }

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { BusesService } from 'src/app/services/buses.service';
+import { Bus } from '../../services/models';
 
 @Component({
   selector: 'app-update-driver',
@@ -10,15 +11,9 @@ import { BusesService } from 'src/app/services/buses.service';
   styleUrls: ['./update-driver.component.css']
 })
 export class UpdateDriverComponent implements OnInit {
-  form = new FormGroup({
-    firstname: new FormControl('',Validators.required),
-    lastname : new FormControl('', Validators.required),
-    contact_number : new FormControl('', Validators.required),
-    license: new FormControl('', Validators.required),
-    status: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    salary: new FormControl('', Validators.required)
-  });
+
+  form: FormGroup;
+  currentIndex: number;
   constructor(private busesService: BusesService,
     private router : Router,
     private route : ActivatedRoute) { }
@@ -30,6 +25,21 @@ export class UpdateDriverComponent implements OnInit {
         this.id = params.get('id');
       }
     );
+
+// this.currentIndex = this.busesService.currentIndex;
+    this.form = new FormGroup({
+      firstname: new FormControl('',Validators.required),
+      lastname : new FormControl('', Validators.required),
+      contact_number : new FormControl('', Validators.required),
+      license: new FormControl('', Validators.required),
+      status: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      salary: new FormControl('', Validators.required)
+    });
+
+
+
+
   }
   updateDriver(){
     console.log(this.id);
