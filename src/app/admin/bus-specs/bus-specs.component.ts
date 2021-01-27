@@ -22,10 +22,10 @@ export class BusSpecsComponent implements OnInit {
     this.getBuses()
   }
   getBuses(){
-    this.busesService. getBuses().subscribe(buses => {
-      this.buses = buses as Bus[];
-      console.log(buses);
-    })
+    // this.busesService. getBuses().subscribe(buses => {
+    //   this.buses = buses as Bus[];
+    //   console.log(buses);
+    // })
   }
 
 }

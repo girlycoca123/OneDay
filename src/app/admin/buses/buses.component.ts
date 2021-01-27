@@ -38,6 +38,7 @@ this.hidden = !this.hidden;
   }
 
   getBuses(){
+<<<<<<< HEAD
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
       .then(response => {
@@ -49,6 +50,13 @@ this.hidden = !this.hidden;
       });
     }
   
+=======
+    // this.busesService. getBuses().subscribe(buses => {
+    //   this.buses = buses as Bus[];
+    //   console.log(buses);
+    // })
+  }
+>>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
   update(id){
     this.router.navigate(['/admin/update-bus/'+id]);
   }

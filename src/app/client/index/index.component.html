@@ -1,8 +1,4 @@
-<!-- <div class="bg-warning py-2">
-    <div class="container">
-
-    </div>
-</div> -->
+<!-- 
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded" style="background-color: #364ed9;">
     <div class="container">
         <a class="navbar-brand p-3 mb text-dark" routerLink="/"><img src="../../assets/images/logo.png" height="40px" width="100%"></a>
@@ -12,7 +8,6 @@
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ml-auto">
                 
-                <!-- <li class="nav-item active"><a class="nav-link" routerLink="/client/login"> Log In </a></li> -->
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/client/register">Sign Up</a>
                 </li>
@@ -29,4 +24,40 @@
             </ul>
         </div>
     </div>
+</nav> -->
+
+<nav
+  id="navbar_top"
+  class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded"
+  style="background-color: #364ed9;"
+>
+  <div class="container">
+    <a class="navbar-brand border border-light bg-light"routerLink="/"><img src="../../assets/images/logo.png" height="40px" width="100%"/></a>
+    <button class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#main_nav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav">
+      <ul class="navbar-nav ml-auto">
+          <p class="nav-item">
+              <a class="nav-link"routerLink="/client/register">Sign Up</a>
+      </p>
+      <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Log In
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="/client/login">As a User</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" routerLink="/admin/login">As an Admin</a>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </nav>

@@ -13,7 +13,7 @@ export interface Bus{
     img_url: string;
 }
  export interface Driver{
-     firstname: string;
+      bus_id: string;
      lastname: string;
      address: string;
      contact_number: number;
@@ -21,7 +21,7 @@ export interface Bus{
  }
 
  export interface UserProfile{
-     firstname: string;
+      bus_id: string;
      lastname: string;
      contact_number: number;
     email_address: string;
