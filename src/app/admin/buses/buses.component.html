@@ -1,16 +1,30 @@
+
+
+<!--  -->
 <div class="wrapper">
     <div class="container">
         <div class="img-area pt-2">
-            <button class="btn btn-warning" (click)=" addBus()">Add New Button</button>
+            <!-- <button class="btn btn-warning" (click)=" addBus()">Add Bus</button> -->
+            <div class="single-img" data-toggle="modal" data-target="#bus1" (click)=" addBus()">
+                <h5>Add New Bus</h5>
+                <img src="../../../assets/images/plus.png" alt="Add New Bus" width="250px" >
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status" style="display: none;" id="spinner">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
         </div>
     </div>   
     <!-- Gallery -->
+
     <br>
     <div class="container">
         <div class="row">
             <div class="card col-md-4 shadow p-3 rounded" *ngFor="let bus of buses">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-v"></i></button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">View</a>
                             <a class="dropdown-item" (click) = "update(bus.id)">Edit</a>

@@ -23,12 +23,19 @@ export class UserProfileComponent implements OnInit {
     this.getUsers();
   }
 
-  getUsers(){
-    this.userService.getUsers().subscribe(users => {
-      this.users = users as UserProfile[];
-      console.log(users);
-    })
-  }
+  getUsers()
+    {
+      const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+      axios.get("https://btal-ride.herokuapp.com/api/admin/client", { headers: { Authorization: AuthStr } })
+        .then(response => {
+          
+       console.log(response.data);
+        })
+      .catch((error) => {
+       console.log('error ' + error);
+        });
+      }
+  
   update(id){
     this.router.navigate(['/admin/update-user/'+id]);
   }

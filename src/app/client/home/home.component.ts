@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Bus } from '../../services/models';
 import { BusesService  } from '../../services/buses.service'
+import axios from 'axios';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,6 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getBuses()
   }
-  getBuses() {
-    this.busesService.getBuses().subscribe(buses => {
-      this.buses = buses as Bus[];
-      console.log(buses);
-    })
-  }
+  
 }

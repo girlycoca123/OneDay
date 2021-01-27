@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./adminlogin.component.css']
 })
 export class AdminloginComponent implements OnInit {
+  public ADMIN_TOKEN: any;
   form = new FormGroup({
     email: new FormControl('', [
       Validators.required,
@@ -24,12 +25,13 @@ export class AdminloginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   login() {
     document.getElementById('spinner').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/admin/login", this.form.value).then(res => {
+      console.log(res.data);
+      window.localStorage.setItem('admin_token',res.data.access_token);
     document.getElementById('spinner').style.display ="none";
-      return this.router.navigate(['/admin']);
+      return this.router.navigate(['/admin/user-profile']);
     }).catch(err => {
       console.log(err)
     })

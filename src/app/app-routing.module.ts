@@ -10,7 +10,7 @@ import { UserHomeComponent } from './client/user-home/user-home.component';
 import {  AdminloginComponent } from './admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './admin/adminregister/adminregister.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { BookingsComponent } from './bookings/bookings.component';
+import { BookingsComponent } from './admin/bookings/bookings.component';
 import { BusesComponent } from './admin/buses/buses.component';
 import { DriversComponent } from './admin/drivers/drivers.component';
 import { UserProfileComponent } from './admin/user-profile/user-profile.component';
@@ -18,6 +18,7 @@ import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
 import { AddBusComponent } from './admin/add-bus/add-bus.component';
+import { AboutComponent } from './client/about/about.component';
 
 
 
@@ -26,6 +27,8 @@ const routes: Routes = [
   { path:'',component:HomeComponent },
   { path: 'client/register', component: RegisterComponent}, 
   { path: 'client/login', component: LoginComponent},
+  { path: 'client/about', component: AboutComponent},
+  { path: 'client/history', component: History},
   { path: 'index', component: IndexComponent},
   { path:'footer', component:FooterComponent },
   { path:'userhome', component:UserHomeComponent},

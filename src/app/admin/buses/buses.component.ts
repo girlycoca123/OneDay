@@ -38,11 +38,17 @@ this.hidden = !this.hidden;
   }
 
   getBuses(){
-    this.busesService. getBuses().subscribe(buses => {
-      this.buses = buses as Bus[];
-      console.log(buses);
-    })
-  }
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin/bus", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        
+     console.log(response);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
+    }
+  
   update(id){
     this.router.navigate(['/admin/update-bus/'+id]);
   }
@@ -56,6 +62,9 @@ this.hidden = !this.hidden;
     }).catch(err => {
       console.log(err)
     })
+  }
+  close(){
+    document.getElementById('table').style.display = "none";
   }
   delete(id){
     axios.delete("https://btal-ride.herokuapp.com/api/admin/bus"+id).then(res => {

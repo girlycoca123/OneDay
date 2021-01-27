@@ -14,7 +14,7 @@ import { AdminloginComponent } from './admin/adminlogin/adminlogin.component';
 import { AdminregisterComponent } from './admin/adminregister/adminregister.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
-import { BookingsComponent } from './bookings/bookings.component';
+import { BookingsComponent } from './admin/bookings/bookings.component';
 import { BusesComponent } from './admin/buses/buses.component';
 import { DriversComponent } from './admin/drivers/drivers.component';
 import { UserProfileComponent } from './admin/user-profile/user-profile.component';
@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
+import { AboutComponent } from './client/about/about.component';
+import { HistoryComponent } from './client/history/history.component';
 // import {MatIconModule} from '@angular/material/icon';
 
 
@@ -50,6 +52,8 @@ import { UpdateDriverComponent } from './admin/update-driver/update-driver.compo
     BusSpecsComponent,
     UpdateUserComponent,
     UpdateDriverComponent,
+    AboutComponent,
+    HistoryComponent,
   
   ],
   imports: [

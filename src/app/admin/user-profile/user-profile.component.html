@@ -1,3 +1,8 @@
+<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status" style="display: none;" id="spinner">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 <table class="table">
     <thead class="thead">
         <tr>
@@ -10,7 +15,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let user of users">
-            <td>{{user.firstname }}{{user.lastname}}</td>
+            <td>{{user.firstname }} {{user.lastname}}</td>
             <th scope="row">{{user.contact_number}}</th>
             <td>{{user.address}}</td>
             <td>{{user.email_address}}</td>

@@ -35,10 +35,16 @@ export class DriversComponent implements OnInit {
   }
 
   getDrivers(){
-    this.driverService.getDrivers().subscribe(drivers => {
-      this.drivers = drivers as Driver[];
-      console.log(drivers);
-    })
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin/driver", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        
+     console.log(response.data);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
+
   }
   UpdateDriver(id){
     this.router.navigate(['/admin/update-driver/'+id]);
@@ -47,14 +53,19 @@ export class DriversComponent implements OnInit {
     console.log(this.form.value);
     axios.post("https://btal-ride.herokuapp.com/api/admin/driver", this.form.value).then(res => {
       document.getElementById("table").style.display = "none";
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/driver']);
     }).catch(err => {
-      console.log(err)
+      alert(err);
     })
   }
   addDriver(){
     document.getElementById("table").style.display = "block";
   }
+
+  close(){
+    document.getElementById("table").style.display = "none";
+  }
+
   deleteDriver(id){
     console.log(id);
     axios.delete("https://btal-ride.herokuapp.com/api/admin/driver/"+id).then(res => {
@@ -63,4 +74,5 @@ export class DriversComponent implements OnInit {
       console.log(err)
     })
   }
+
 }

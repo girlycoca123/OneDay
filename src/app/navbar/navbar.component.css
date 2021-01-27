@@ -33,4 +33,11 @@ body {
     #wrapper.toggled #sidebar-wrapper {
       margin-left: -15rem;
     }
+
+    .dropdown-item{
+      background-color:  rgb(125, 110, 224);
+    }
+    .dropdown-menu{
+      background-color:  rgb(125, 110, 224);
+    }
   }

@@ -42,13 +42,18 @@ export class UserHomeComponent implements OnInit {
       }
     );
   }
-  getBuses() {
-    this.busesService.getBuses().subscribe(buses => {
-      this.buses = buses as Bus[];
-      console.log(buses);
-    })
-  }
-
+ 
+  getBuses(){
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('access_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin/bus", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        
+     console.log(response.data);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
+    }
   booking() {
     console.log(this.form.value);
     axios.post("https://btal-ride.herokuapp.com/api/client/booking/send/"+this.id, this.form.value).then(res=>{
@@ -56,5 +61,9 @@ export class UserHomeComponent implements OnInit {
         }).catch(err=>{
             console.log(err)
         })
+  }
+
+  history(){
+    this.router.navigate(['client/history']);
   }
 }
