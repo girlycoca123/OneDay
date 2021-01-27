@@ -20,6 +20,7 @@ export class DriversComponent implements OnInit {
     this.getDrivers()
   }
 
+  hidden = true;
   getDrivers(){
     this.driverService.getDrivers().subscribe(drivers => {
       this.drivers = drivers as Driver[];
@@ -29,6 +30,7 @@ export class DriversComponent implements OnInit {
 
   deleteDriver(driver: Driver){
     this.drivers.splice(this.drivers.indexOf(driver), 1);
+    this.hidden = !this.hidden;
   }
 
 }

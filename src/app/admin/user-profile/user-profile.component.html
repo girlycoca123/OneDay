@@ -1,3 +1,10 @@
+<div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="!hidden">
+    <strong>Successfully Deleted!</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
 <table class="table">
     <thead class="thead">
         <tr>
@@ -13,7 +20,8 @@
             <th scope="row">{{user.contact_number}}</th>
             <td>{{user.address}}</td>
             <td><button class="btn btn-primary" (click)="update(id)">Update</button>
-                <button class="btn btn-danger" style="margin-left:20px;" (click)="deleteUser(id)">Delete</button></td>
+                <button class="btn btn-danger" style="margin-left:20px;" (click)="deleteUser(id, user)">Delete</button>
+            </td>
         </tr>
     </tbody>
 </table>

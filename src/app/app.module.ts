@@ -21,18 +21,9 @@ import { UserProfileComponent } from './admin/user-profile/user-profile.componen
 import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 import { AddBusComponent } from './admin/add-bus/add-bus.component';
 import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
-<<<<<<< HEAD
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import {MatIconModule} from '@angular/material/icon';
-=======
-import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
-// import {MatIconModule} from '@angular/material/icon';
 
-
-
-
-
->>>>>>> 04b656f304f4e096f6594efd2e5631d5eb41aa19
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,11 +43,6 @@ import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
     AddDriverComponent,
     AddBusComponent,
     UpdateBusComponent,
-<<<<<<< HEAD
-=======
-    BusSpecsComponent,
-  
->>>>>>> 04b656f304f4e096f6594efd2e5631d5eb41aa19
   ],
   imports: [
     BrowserModule,

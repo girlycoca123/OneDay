@@ -23,6 +23,8 @@ export class UserProfileComponent implements OnInit {
     this.getUsers();
   }
 
+  hidden = true;
+
   getUsers(){
     this.userService.getUsers().subscribe(users => {
       this.users = users as UserProfile[];
@@ -30,12 +32,14 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-  deleteUser(id){
+  deleteUser(id, user: UserProfile){
+    this.users.splice(this.users.indexOf(user), 1);
     axios.post("https://btal-ride.herokuapp.com/api/admin/client"+id).then(res => {
       return this.router.navigate(['/admin/dashboard']);
     }).catch(err => {
       console.log(err)
     })
+    this.hidden = !this.hidden;
   }
 
 }

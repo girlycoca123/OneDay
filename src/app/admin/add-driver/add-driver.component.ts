@@ -6,7 +6,6 @@ import { FormGroup, FormControl } from '@angular/forms';
 
 
 
-
 @Component({
   selector: 'app-add-driver',
   templateUrl: './add-driver.component.html',
@@ -32,6 +31,7 @@ export class AddDriverComponent implements OnInit {
   }
 
   addDriver(driver: Driver){
+    this.driversService.addDriver(driver);
     // this.driversService.addDriver(driver);
     // this.persons.push(driver);
   }

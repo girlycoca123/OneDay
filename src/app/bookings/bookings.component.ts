@@ -20,6 +20,8 @@ constructor(
     this.getBookings()
   }
 
+  hidden = true;
+
   getBookings(){
     this.bookingService.getBookings().subscribe(bookings => {
       this.bookings = bookings as Booking[];
@@ -29,7 +31,7 @@ constructor(
 
   deleteBooking(booking: Booking){
     this.bookings.splice(this.bookings.indexOf(booking), 1);
-    alert ("Succesfully Deleted!")
+    this.hidden = !this.hidden;
   }
 
   // viewUpdatePersonForm(booking: Booking){
