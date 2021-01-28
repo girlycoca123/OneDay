@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center">
     <div class="spinner-border" role="status" style="display: none;" id="spinner">
-      <span class="sr-only">Loading...</span>
+        <span class="sr-only">Loading...</span>
     </div>
-  </div>
+</div>
 <table class="table">
     <thead class="thead">
         <tr>
@@ -24,8 +24,8 @@
             <td>{{booking.end_date}}</td>
             <td>{{booking.price}}</td>
             <td>{{booking.payment}}</td>
-            <td><button (click) = "UpdateDriver(driver.id)" class="btn btn-primary">Update</button>
-            <button (click)=" alertConfirmation(booking.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button></td>
+            <td>
+                <button (click)=" alertConfirmation(booking.id) " class="btn btn-danger " style="margin-left: 10px; ">Delete</button></td>
 
         </tr>
     </tbody>

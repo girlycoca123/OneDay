@@ -52,14 +52,14 @@ constructor(
     }).then((result) => {
       if (result.value) {
         const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
-        axios.delete("https://btal-ride.herokuapp.com/api/admin-booking/" + id, { headers: { Authorization: AuthStr } })
+        axios.delete("https://btal-ride.herokuapp.com/api/client-booking/"+id, { headers: { Authorization: AuthStr } })
           .then(response => {
             Swal.fire(
               'Removed!',
               'Booking removed successfully.',
               'success'
             )
-            this.router.navigate(['/admin/drivers'])
+            window.location.reload();
           })
           .catch((error) => {
             console.log('error ' + error);
@@ -74,4 +74,5 @@ constructor(
     })
   }
 
+  
 }

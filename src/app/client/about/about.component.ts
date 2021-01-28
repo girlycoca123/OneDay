@@ -12,4 +12,9 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  logout(){
+    window.localStorage.removeItem('client_token');
+    window.localStorage.removeItem('client_id');
+  }
 }

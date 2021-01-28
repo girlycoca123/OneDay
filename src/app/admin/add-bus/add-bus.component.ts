@@ -4,6 +4,7 @@ import { BusesService } from 'src/app/services/buses.service';
 import { Bus } from '../../services/models';  
 import axios from 'axios';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-bus',
@@ -28,16 +29,17 @@ export class AddBusComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  addNewBus(bus){
-    console.log(this.form.value);
-    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+  addNewBus(){
+    document.getElementById('spinner').style.display = "block";
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
+    axios.post("https://btal-ride.herokuapp.com/api/admin-bus", this.form.value, { headers: { Authorization: AuthStr } })
       .then(response => {
-        // this.router.navigate(['/admin/bus']);
-        this.busesService.addBus(bus);
+        document.getElementById('spinner').style.display = "none";
+        Swal.fire('Bus', 'Added Successfully', 'success');
+        this.router.navigate(['/admin/buses']);
       })
-    .catch((error) => {
-     console.log('error ' + error);
+      .catch((error) => {
+        console.log('error ' + error);
       });
     }
 }

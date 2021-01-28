@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Driver } from '../services/models';
+// import { Driver } from '../services/models';
 import axios from 'axios';
 
 
@@ -9,7 +9,7 @@ import axios from 'axios';
 })
 export class DriversService {
 
-  driver: Driver[];
+  // driver: Driver[];
 
   private url = "https://btal-ride.herokuapp.com/api/admin-driver";
 
@@ -28,13 +28,13 @@ export class DriversService {
       });
   }
 
-  addDriver(driver: Driver){
-    this.driver.push(driver);
-  }
+  // addDriver(driver: Driver){
+  //   this.driver.push(driver);
+  // }
 
-  updateDriver(index:number,driver: Driver){
-    this.driver[index] = driver;
-  }
+  // updateDriver(index:number,driver: Driver){
+  //   this.driver[index] = driver;
+  // }
 
   deleteDriver(){
     // alert('delete');

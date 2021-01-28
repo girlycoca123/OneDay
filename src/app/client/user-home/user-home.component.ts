@@ -32,7 +32,6 @@ export class UserHomeComponent implements OnInit {
   ) { }
   id: any;
   ngOnInit(): void {
-    // Backend side
     this.getBuses();
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
@@ -44,16 +43,12 @@ export class UserHomeComponent implements OnInit {
           console.log('error ' + error);
         });
     });
-
-    // this.buses = this.busesService.getBuses();
-    // console.log(this.buses);
   }
 
   getBuses() {
-    document.getElementById('spinner').style.display = "block";
     axios.get("https://btal-ride.herokuapp.com/api/client/buses")
       .then(response => {
-        document.getElementById('spinner').style.display = "none";
+        console.log(response);
       })
       .catch((error) => {
         console.log('error ' + error);

@@ -1,4 +1,3 @@
-
 <table class="table">
     <thead class="thead">
         <tr>
@@ -15,7 +14,7 @@
             <th scope="row">{{user.contact_number}}</th>
             <td>{{user.address}}</td>
             <td>{{user.email_address}}</td>
-            <td><button class="btn btn-primary" (click)="update(user.id)">Update</button>
+            <td><button class="btn btn-primary" (click)="update(user)">Update</button>
                 <button class="btn btn-danger" style="margin-left:20px;" (click)=" alertConfirmation(user.id) ">Delete</button>
             </td>
         </tr>

@@ -27,12 +27,12 @@ export class BusSpecsComponent implements OnInit {
         this.id = params.get('id');
       }
     );
-    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/admin-bus/"+this.id, { headers: { Authorization: AuthStr } })
       .then(response => {
-      document.getElementById('spinner').style.display = "none";
+        console.log(response.data);
        this.buses = response.data;
+       
       })
     .catch((error) => {
      console.log('error ' + error);

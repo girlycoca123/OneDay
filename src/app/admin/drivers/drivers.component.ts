@@ -52,8 +52,13 @@ export class DriversComponent implements OnInit {
   }
 
 
-  UpdateDriver(id){
-    this.router.navigate(['/admin/update-driver/'+id]);
+  
+  update(driver){
+    this.router.navigate(['/admin/update-user/'+driver.id],{
+      state :{
+        data : driver
+      }
+    });
   }
   addnewDriver(){
     console.log(this.form.value);
@@ -95,7 +100,7 @@ export class DriversComponent implements OnInit {
               'Driver removed successfully.',
               'success'
             )
-            this.router.navigate(['/admin/drivers'])
+            window.location.reload();
           })
           .catch((error) => {
             console.log('error ' + error);

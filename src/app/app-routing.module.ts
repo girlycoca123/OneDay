@@ -17,14 +17,16 @@ import { UserProfileComponent } from './admin/user-profile/user-profile.componen
 import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
-import { AddBusComponent } from './admin/add-bus/add-bus.component';
 import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
-import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 import { AboutComponent } from './client/about/about.component';
 import { TokenGuard } from './guards/token/token.guard';
 import { ClientGuard } from './guards/token/client.guard';
 import { BookingFormComponent } from './client/booking-form/booking-form.component';
-import { HistoryComponent } from './client/history/history.component'
+import { HistoryComponent } from './client/history/history.component';
+import { AddDriverComponent } from './admin/add-driver/add-driver.component';
+import { AddBusComponent } from './admin/add-bus/add-bus.component';
+import { LandingPageComponent } from './client/landing-page/landing-page.component';
+import { AboutNotLoginComponent } from './client/about-not-login/about-not-login.component';
 // import { BusinfoComponent } from './client/businfo/businfo.component';
 
 
@@ -32,9 +34,15 @@ import { HistoryComponent } from './client/history/history.component'
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+
+  {path : 'client/landing-page', component: LandingPageComponent},
+  {path: 'about', component: AboutNotLoginComponent},
+  {path: 'client/history', component:HistoryComponent},
+  { path:'userhome', component:UserHomeComponent},
+  {path: 'client/about', component: AboutComponent},
+
   { path: 'client/register', component: RegisterComponent },
   { path: 'client/login', component: LoginComponent },
-  { path: 'client/about', component: AboutComponent },
   {path: 'client/history', component:HistoryComponent, canActivate :[ClientGuard]},
   { path: 'index', component: IndexComponent },
   { path: 'footer', component: FooterComponent },
@@ -53,9 +61,9 @@ const routes: Routes = [
       { path: 'update-bus/:id', component: UpdateBusComponent },
       { path: 'bus_specs/:id', component: BusSpecsComponent },
       { path: 'update-user/:id', component: UpdateUserComponent },
-      { path: 'add-driver', component: AddDriverComponent },
-      { path: 'add-bus', component: AddBusComponent }
-
+      {path :'update-driver/:id',component:UpdateDriverComponent},
+      {path :'add-driver',component:AddDriverComponent},
+      { path: 'add-bus', component: AddBusComponent}
     ]
   },
 ]

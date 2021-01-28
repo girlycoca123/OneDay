@@ -29,12 +29,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    document.getElementById('spinner').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/client/login", this.form.value).then(res => {
-      console.log(res.data);
       window.localStorage.setItem('client_token',res.data.access_token);
       window.localStorage.setItem('client_id',res.data.client_id);
-      document.getElementById('spinner').style.display ="none";
       return this.router.navigate(['/userhome']);
     }).catch(err => {
       alert(err);

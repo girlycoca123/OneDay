@@ -26,6 +26,19 @@ export class UsersService {
       });
   }
 
+  getUser(){
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get(this.url, { headers: { Authorization: AuthStr } })
+      .then(response => {
+    return this.http.get(this.url);
+        
+     console.log(response);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
+  }
+
   updateUser(){
     alert('update');
   }

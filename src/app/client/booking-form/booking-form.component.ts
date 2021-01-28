@@ -4,6 +4,7 @@ import { Bus } from '../../services/models';
 import { BusesService } from '../../services/buses.service';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
@@ -49,6 +50,7 @@ export class BookingFormComponent implements OnInit {
     const client_id = window.localStorage.getItem('client_id');
     axios.post("https://btal-ride.herokuapp.com/api/client/booking/send/"+client_id, this.form.value)
       .then(response => {
+        Swal.fire('Hi', 'Thank You have a nice trip', 'success');
       this.router.navigate(['/userhome']);
       })
     .catch((error) => {

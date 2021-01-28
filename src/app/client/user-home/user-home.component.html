@@ -1,51 +1,45 @@
-<nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded"
-  style="background-color: #364ed9;">
-  <div class="container">
-    <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png"
-        height="40px" width="100%" /></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false"
-      aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="main_nav">
-      <ul class="navbar-nav ml-auto">
-        <p class="nav-item">
-          <a class="nav-link" routerLink="/client/history">History</a>
-        </p>
-        <div class="dropdown">
-          <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton"
-            data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">
-            User
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" (click)="logout()">Sign Out</a>
-          </div>
+<nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded" style="background-color: #364ed9;">
+    <div class="container">
+        <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png" height="40px" width="100%" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav ml-auto">
+                <p class="nav-item">
+                    <a class="nav-link" routerLink="/client/landing-page">Home</a>
+                </p>
+                <p class="nav-item">
+                    <a class="nav-link" routerLink="/client/about">About</a>
+                </p>
+                <p class="nav-item">
+                    <a class="nav-link" routerLink="/client/history">History</a>
+                </p>
+                <div class="dropdown">
+                    <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">User</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Sign Out</a>
+                    </div>
+                </div>
+            </ul>
         </div>
-      </ul>
     </div>
-  </div>
 </nav>
 
 <!-- Buses -->
 <div class="parallax text-center">
-  <p class="display-1 font-weight-bold">Travel in our Care</p>
-  <!-- <p class="h3">Travel in our Care</p> -->
+    <p class="display-1 font-weight-bold">Travel in our Care</p>
 </div>
 <br />
 
 <!-- Booking Form -->
 <br />
 
+
 <h2 class="text-center font-weight-bold">Our Buses</h2>
 
-<div class="d-flex justify-content-center">
-  <div class="spinner-border" role="status" style="display: none;" id="spinner">
-    <span class="sr-only">Loading...</span>
-  </div>
-</div>
-
 <div *ngFor="let bus of buses">
-  <app-businfo [bus]="bus"> </app-businfo>
+    <app-businfo [bus]="bus"> </app-businfo>
 </div>
 
 <app-footer></app-footer>

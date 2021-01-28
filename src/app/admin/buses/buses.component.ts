@@ -25,7 +25,6 @@ export class BusesComponent implements OnInit {
   constructor(
     private busesService: BusesService,
     private router: Router,
-    // public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +58,7 @@ export class BusesComponent implements OnInit {
   }
 
   addBus() {
-    this.router.navigate(['/admin/add-bus'])
+    this.router.navigate(['/admin/add-bus']);
   }
 
   alertConfirmation(id) {
@@ -77,10 +76,10 @@ export class BusesComponent implements OnInit {
           .then(response => {
             Swal.fire(
               'Removed!',
-              'Product removed successfully.',
+              'Bus removed successfully.',
               'success'
             )
-            this.router.navigate(['/admin/buses'])
+            window.location.reload();
           })
           .catch((error) => {
             console.log('error ' + error);
@@ -88,7 +87,7 @@ export class BusesComponent implements OnInit {
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
-          'Product still in our database.)',
+          ' still in our database.)',
           'error'
         )
       }

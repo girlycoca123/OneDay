@@ -19,8 +19,12 @@ export class UserProfileComponent implements OnInit {
     private router: Router
   ) { }
   
-  update(id){
-    this.router.navigate(['/admin/update-user/'+id]);
+  update(user){
+    this.router.navigate(['/admin/update-user/'+user.id],{
+      state :{
+        data : user
+      }
+    });
   }
   ngOnInit(): void {
     this.getUsers();
@@ -65,7 +69,7 @@ export class UserProfileComponent implements OnInit {
               'User removed successfully.',
               'success'
             )
-            this.router.navigate(['/admin/user-profile'])
+            window.location.reload();
           })
           .catch((error) => {
             console.log('error ' + error);

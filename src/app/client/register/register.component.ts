@@ -54,12 +54,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    document.getElementById('spinner').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/client/register", this.form.value).then(res => {
       console.log(res.data);
       window.localStorage.setItem('client_token',res.data.access_token);
       window.localStorage.setItem('client_id',res.data.id);
-      document.getElementById('spinner').style.display ="none";
       return this.router.navigate(['/userhome']);
     }).catch(err => {
       window.alert("Error Login Please Input the Contact Number with 11 digits");

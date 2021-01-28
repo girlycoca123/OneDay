@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './client/login/login.component';
 import { RegisterComponent } from './client/register/register.component';
 import { IndexComponent } from './client/index/index.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './client/home/home.component';
 import { FooterComponent } from './client/footer/footer.component';
 import { UserHomeComponent } from './client/user-home/user-home.component';
@@ -26,6 +26,10 @@ import { UpdateDriverComponent } from './admin/update-driver/update-driver.compo
 import { BookingFormComponent } from './client/booking-form/booking-form.component';
 import { BusinfoComponent } from './client/businfo/businfo.component';
 import { HistoryComponent } from './client/history/history.component';
+import { AddBusComponent } from './admin/add-bus/add-bus.component';
+import { AddDriverComponent } from './admin/add-driver/add-driver.component';
+import { LandingPageComponent } from './client/landing-page/landing-page.component';
+import { AboutNotLoginComponent } from './client/about-not-login/about-not-login.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +54,10 @@ import { HistoryComponent } from './client/history/history.component';
     BookingFormComponent,
     BusinfoComponent,
     HistoryComponent,
+    AddBusComponent,
+    AddDriverComponent,
+    LandingPageComponent,
+    AboutNotLoginComponent,
   
   ],
   imports: [
