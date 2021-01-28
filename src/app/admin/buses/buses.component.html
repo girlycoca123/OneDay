@@ -1,53 +1,7 @@
-    <!-- <form addForm="ngForm" (onSubmit)="addNewBus()" style="display: none;" id="form">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="firstNnme">First Name: </label>
-                <input type="text" formControlName="firstname" id="firstname" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="lastname">Last Name: </label>
-                <input type="text" formControlName="lastname" id="lastname" class="form-control">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="contact_number">Contact Number: </label>
-                <input type="text" formControlName="contact_number" id="contact_number" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="license">License ID: </label>
-                <input type="text" formControlName="license" id="license" class="form-control">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="status">Status: </label>
-                <input type="text" formControlName="status" id="status" class="form-control">
-            </div>
-            <div class="form-group col-md-6">
-                <label for="salary">Salary: </label>
-                <input type="text" formControlName="salary" id="salary" class="form-control">
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-secondary form-control" (click)="cancel()">Cancel</button>
-            </div>
-            <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-success form-control">Add Person</button>
-            </div>
-        </div>
-    </form> -->
-<!--  -->
     <div class="container">
         <div class="img-area pt-2">
-            <button class="btn btn-warning" (click)=" addBus()" id="btnClick" style="display: block;">Add Bus</button>
-            <!-- <div class="single-img" data-toggle="modal" data-target="#bus1" (click)=" addBus()">
-                <h5>Add New Bus</h5>
-                <img src="../../../assets/images/plus.png" alt="Add New Bus" width="250px" >
-            </div> -->
+            <a class="btn btn-warning" (click)=" addBus()">Add Bus</a>
             <br>
-
         </div>
         <div class="d-flex justify-content-center">
             <div class="spinner-border" role="status" style="display: none;" id="spinner">
@@ -65,7 +19,7 @@
                     <div class="dropdown-menu">
                         <a class="dropdown-item" (click)="view(bus.id)" >View</a>
                         <a class="dropdown-item" (click)="update(bus.id)">Edit</a>
-                        <a class="dropdown-item"><button mat-button (click)="delDialog()">Delete</button></a>
+                        <a class="dropdown-item" (click)="alertConfirmation(bus.id)">Delete</a>
                     </div>
                 </div>
                 <div class="single-img" data-toggle="modal" data-target="#bus1">

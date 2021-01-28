@@ -14,11 +14,10 @@ export class RegisterComponent implements OnInit {
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    // contact_number: new FormControl('',[
-    //     Validators.required,
-    //     Validators.minLength(11)
-    // ]),
-    contact_number: new FormControl('', Validators.required),
+    contact_number: new FormControl('',[
+      Validators.required,
+      Validators.minLength(11)
+      ]),
     email_address: new FormControl('', [
       Validators.required,
       Validators.email
@@ -63,7 +62,7 @@ export class RegisterComponent implements OnInit {
       document.getElementById('spinner').style.display ="none";
       return this.router.navigate(['/userhome']);
     }).catch(err => {
-      console.log(err)
+      window.alert("Error Login Please Input the Contact Number with 11 digits");
     })
   }
 

@@ -1,46 +1,139 @@
-<div class="card" style="width: 20%;">
-    <div class="card-body">
-        <form name="form" [formGroup]="form" (ngSubmit)="form.valid && updateBus()">
-            <div class="form-group ">
-                <label for="bus_name">Bus Name</label>
-                <input type="text" class="form-control" formControlName="bus_name" required>
-                <div class="invalid-feedback">
-                    <div>Bus Name is required</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" class="form-control" formControlName="description">
-                <div *ngIf="form.get('description').touched && form.get('description').invalid" class="invalid-feedback">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" class="form-control" formControlName="price">
-                <div *ngIf="form.get('price').touched && form.get('price').invalid" class="invalid-feedback">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="img_url">Image Url</label>
-                <input type="text" class="form-control" formControlName="img_url">
-                <div *ngIf="form.get('img_url').touched && form.get('img_url').invalid" class="invalid-feedback">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="number_of_seat">Number of Seats</label>
-                <input type="text" class="form-control" formControlName="number_of_seat">
-                <div *ngIf="form.get('number_of_seat').touched && form.get('number_of_seat').invalid" class="invalid-feedback">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="status">Status</label>
-                <input type="text" class="form-control" formControlName="status">
-                <div *ngIf="form.get('status').touched && form.get('status').invalid" class="invalid-feedback">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-block btn-primary" [disabled]="!form.valid">Update Bus</button>
-            <br>
-            <a type="button" class="btn btn-secondary" routerLink="/admin/buses">Cancel</a>
-        </form>
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+ box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+ width: 100%;
+ padding: 12px;
+ border: 1px solid #ccc;
+ border-radius: 4px;
+ resize: vertical;
+}
+
+label {
+ padding: 12px 12px 12px 0;
+ display: inline-block;
+}
+
+input[type=submit] {
+ background-color: #4CAF50;
+ color: white;
+ padding: 12px 20px;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+ float: right;
+}
+
+input[type=submit]:hover {
+ background-color: #45a049;
+}
+
+.container {
+ border-radius: 5px;
+ background-color: #f2f2f2;
+ padding: 20px;
+}
+
+.col-25 {
+ float: left;
+ width: 25%;
+ margin-top: 6px;
+}
+
+.col-75 {
+ float: left;
+ width: 75%;
+ margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+ content: "";
+ display: table;
+ clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+ .col-25, .col-75, input[type=submit] {
+   width: 100%;
+   margin-top: 0;
+ }
+}
+</style>
+</head>
+<body>
+
+<h2>{{buses.bus_name}}</h2>
+<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status" style="display: none;" id="spinner">
+      <span class="sr-only">Loading...</span>
     </div>
+  </div>
+<div class="container">
+ <form (ngSubmit)= "updateBus()" >
+   <div class="row">
+     <div class="col-25">
+       <label for="fname">Bus Name</label>
+     </div>
+     <div class="col-75">
+       <input type="text" id="fname" name="firstname"  placeholder="{{buses.bus_name}}">
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-25">
+       <label for="fname">Number of Seat</label>
+     </div>
+     <div class="col-75">
+       <input type="text" id="fname" name="firstname"  placeholder="{{buses.number_of_seat}}">
+     </div>
+   </div>
+   <div class="row">
+     <div class="col-25">
+       <label for="lname">Price</label>
+     </div>
+     <div class="col-75">
+       <input type="text" id="lname" name="lastname" placeholder="{{buses.price}}">
+     </div>
+   </div>
+   <div class="row">
+    <div class="col-25">
+      <label for="lname">Status</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="lastname" placeholder="{{buses.status}}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Image Url</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="lastname" placeholder="{{buses.img_url}}">
+    </div>
+  </div>
+   <div class="row">
+     <div class="col-25">
+       <label for="subject">Descriptions</label>
+     </div>
+     <div class="col-75">
+       <textarea id="subject" name="subject" placeholder="{{buses.description}}" style="height:200px"></textarea>
+     </div>
+   </div>
+   <div class="row">
+     <a type="submit"  style="margin-left: 15px;" class="btn btn-primary" routerLink = "/admin/buses">Back</a>
+     <button type="submit"  style="margin-left: 15px;" class="btn btn-success" >Edit Bus</button>
+   </div>
+ </form>
 </div>
+
+</body>
+</html>
+ -->

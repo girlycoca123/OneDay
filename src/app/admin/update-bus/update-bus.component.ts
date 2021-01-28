@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { BusesService } from 'src/app/services/buses.service';
 import axios from 'axios';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Bus } from 'src/app/services/models';
 
 @Component({
   selector: 'app-update-bus',
@@ -10,6 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./update-bus.component.css']
 })
 export class UpdateBusComponent implements OnInit {
+
+  buses:Bus[];
 
   form = new FormGroup({
     bus_name: new FormControl(''),
@@ -32,7 +35,18 @@ export class UpdateBusComponent implements OnInit {
         this.id = params.get('id');
       }
     );
+    document.getElementById('spinner').style.display = "block";
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin-bus/"+this.id, { headers: { Authorization: AuthStr } })
+      .then(response => {
+      document.getElementById('spinner').style.display = "none";
+       this.buses = response.data;
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
+  
   updateBus(){
     console.log(this.id);
     axios.put("https://btal-ride.herokuapp.com/api/admin/bus/"+this.id, this.form.value).then(res => {

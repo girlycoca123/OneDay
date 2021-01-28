@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 import { BookingsService } from '../../services/bookings.service';
 import { Booking } from '../../services/models';
 // import { Router } from '@angular/router';
@@ -14,7 +16,8 @@ export class BookingsComponent implements OnInit {
   bookings: Booking[];
 
 constructor(
-  private bookingService: BookingsService
+  private bookingService: BookingsService,
+  private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,9 +27,11 @@ constructor(
   hidden = true;
 
   getBookings(){
+    document.getElementById('loading').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/client-booking", { headers: { Authorization: AuthStr } })
       .then(response => {
+        document.getElementById('loading').style.display = "none";
         this.bookings = response.data;
         console.log(this.bookings);
       })
@@ -36,14 +41,37 @@ constructor(
 
   }
 
-  deleteBooking(booking: Booking){
-    this.bookings.splice(this.bookings.indexOf(booking), 1);
-    this.hidden = !this.hidden;
+  alertConfirmation(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This process is irreversible.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
+        axios.delete("https://btal-ride.herokuapp.com/api/admin-booking/" + id, { headers: { Authorization: AuthStr } })
+          .then(response => {
+            Swal.fire(
+              'Removed!',
+              'Booking removed successfully.',
+              'success'
+            )
+            this.router.navigate(['/admin/drivers'])
+          })
+          .catch((error) => {
+            console.log('error ' + error);
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Booking still in our database.)',
+          'error'
+        )
+      }
+    })
   }
-
-  // viewUpdatePersonForm(booking: Booking){
-  //   this.bookingService.currentIndex = this.bookingService.getBookingIndex(booking);
-  //   this.router.navigate(['/update-person']);
-  // }
 
 }

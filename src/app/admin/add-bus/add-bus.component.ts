@@ -28,7 +28,7 @@ export class AddBusComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  addNewBusbus(bus){
+  addNewBus(bus){
     console.log(this.form.value);
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })

@@ -1,13 +1,7 @@
-import { Component, OnInit,  } from '@angular/core';
-import { DriversService } from 'src/app/services/drivers.service';
-import { Driver } from '../../services/models';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators, FormsModule } from '@angular/forms';
 import axios from 'axios';
-import { LoginComponent } from 'src/app/client/login/login.component';
-FormsModule
-
-
 
 @Component({
   selector: 'app-add-driver',
@@ -15,34 +9,33 @@ FormsModule
   styleUrls: ['./add-driver.component.css']
 })
 export class AddDriverComponent implements OnInit {
+  form = new FormGroup({
+    firstname: new FormControl('', Validators.required),
+    lastname: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    contact_number: new FormControl('',[
+      Validators.required,
+      Validators.minLength(11)
+      ]),
+    email_address: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ])
 
-firstname;
-lastname;
-
+  });
+  
   constructor(
     private router: Router,
-    private driversService: DriversService
   ) {}
 
   ngOnInit(): void {
   }
 
-  test(data: any){
-    console.log(data);
-    
-  }
-
-  addDriver(driver: Driver){
-    console.log(driver);
-    // const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    // axios.post("https://btal-ride.herokuapp.com/api/admin-driver", { headers: { Authorization: AuthStr } })
-    //   .then(response => {
-    //   this.router.navigate(['admin/drivers']);
-    //   })
-    // .catch((error) => {
-    //  console.log('error ' + error);
-    //   });
+ 
   }
  
 
-}

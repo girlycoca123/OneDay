@@ -36,8 +36,7 @@ export class UserHomeComponent implements OnInit {
     this.getBuses();
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
-      const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token'));
-      axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+      axios.get("https://btal-ride.herokuapp.com/api/client/buses")
         .then(response => {
           this.buses = response.data;
         })
@@ -52,8 +51,7 @@ export class UserHomeComponent implements OnInit {
 
   getBuses() {
     document.getElementById('spinner').style.display = "block";
-    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token'));
-    axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+    axios.get("https://btal-ride.herokuapp.com/api/client/buses")
       .then(response => {
         document.getElementById('spinner').style.display = "none";
       })

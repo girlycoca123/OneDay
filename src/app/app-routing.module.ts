@@ -52,6 +52,7 @@ const routes: Routes = [
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'update-bus/:id', component: UpdateBusComponent },
       { path: 'bus_specs/:id', component: BusSpecsComponent },
+      { path: 'update-user/:id', component: UpdateUserComponent },
       { path: 'add-driver', component: AddDriverComponent },
       { path: 'add-bus', component: AddBusComponent }
 

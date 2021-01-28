@@ -4,6 +4,7 @@ import { DriversService } from 'src/app/services/drivers.service';
 import axios from 'axios';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -36,12 +37,13 @@ export class DriversComponent implements OnInit {
 
   hidden = true;
   getDrivers(){
+    document.getElementById('loading').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/admin-driver", { headers: { Authorization: AuthStr } })
       .then(response => {
         this.drivers = response.data;
         console.log(this.drivers);
-        
+        document.getElementById('loading').style.display = "none";
       })
     .catch((error) => {
      console.log('error ' + error);
@@ -55,8 +57,9 @@ export class DriversComponent implements OnInit {
   }
   addnewDriver(){
     console.log(this.form.value);
+    document.getElementById('loading').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/admin/driver", this.form.value).then(res => {
-      document.getElementById("table").style.display = "none";
+    document.getElementById('loading').style.display = "none";
       this.router.navigate(['/admin/driver']);
     }).catch(err => {
       alert(err);
@@ -74,9 +77,36 @@ export class DriversComponent implements OnInit {
     document.getElementById("table").style.display = "none";
   }
 
-  deleteDriver(driver: Driver){
-    this.drivers.splice(this.drivers.indexOf(driver), 1);
-    this.hidden = !this.hidden;
+  alertConfirmation(id) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'This process is irreversible.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }).then((result) => {
+      if (result.value) {
+        const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
+        axios.delete("https://btal-ride.herokuapp.com/api/admin-driver/" + id, { headers: { Authorization: AuthStr } })
+          .then(response => {
+            Swal.fire(
+              'Removed!',
+              'Driver removed successfully.',
+              'success'
+            )
+            this.router.navigate(['/admin/drivers'])
+          })
+          .catch((error) => {
+            console.log('error ' + error);
+          });
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Driver still in our database.)',
+          'error'
+        )
+      }
+    })
   }
-
 }
