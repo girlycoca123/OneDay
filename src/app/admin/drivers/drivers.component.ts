@@ -54,7 +54,7 @@ export class DriversComponent implements OnInit {
 
   
   update(driver){
-    this.router.navigate(['/admin/update-user/'+driver.id],{
+    this.router.navigate(['/admin/update-driver/'+driver.id],{
       state :{
         data : driver
       }

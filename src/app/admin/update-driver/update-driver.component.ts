@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
-import { DriversService } from 'src/app/services/drivers.service';
+import Swal from 'sweetalert2';
 import { Driver } from '../../services/models';
 
 @Component({
@@ -23,9 +23,7 @@ export class UpdateDriverComponent implements OnInit {
   status: boolean;
   salary: number;
 
-  submit(data: any){
-
-  }
+ 
 
   constructor(
     private router : Router,
@@ -38,25 +36,35 @@ export class UpdateDriverComponent implements OnInit {
       params => {
         this.id = params.get('id');
       });
-    console.log(this.driver["firstname"]);
-    console.log(this.id);
+  
     this.driver = history.state.data
+    console.log(this.driver);
+    
     this.firstname =  this.driver["firstname"]
     this.lastname = this.driver["lastname"];
     this.contact_number = this.driver["contact_number"];
+    this.address = this.driver["address"];
     this.license = this.driver["license"];
     this.status = this.driver["status"];
     this.salary = this.driver["salary"];
 
   }
 
-  updateDriver(){
-    console.log(this.id);
-    axios.put("https://btal-ride.herokuapp.com/api/admin/driver/"+this.id).then(res => {
-      // , this.form.value
-      this.router.navigate(['/admin']);
-    }).catch(err => {
-      console.log(err)
-    })
+  submit(val){
+    console.log(val);
+    
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.put("https://btal-ride.herokuapp.com/api/admin-driver/"+this.driver.id, val, { headers: { Authorization: AuthStr } })
+      .then(response => {
+        Swal.fire(
+          'Update',
+          'User updated successfully.',
+          'success'
+        )
+        this.router.navigate(['/admin/drivers'])
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
 }

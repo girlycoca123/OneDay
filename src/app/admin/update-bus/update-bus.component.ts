@@ -4,6 +4,7 @@ import { BusesService } from 'src/app/services/buses.service';
 import axios from 'axios';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Bus } from 'src/app/services/models';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-bus',
@@ -13,15 +14,13 @@ import { Bus } from 'src/app/services/models';
 export class UpdateBusComponent implements OnInit {
 
   buses:Bus[];
+  bus_name: string;
+  description: string;
+  number_of_seat: number;
+  price:number;
+  img_url:string;
+  status:boolean;
 
-  form = new FormGroup({
-    bus_name: new FormControl(''),
-    description : new FormControl('',),
-    number_of_seat : new FormControl(''),
-    price : new FormControl(''),
-    img_url: new FormControl(''),
-    status: new FormControl('')
-  });
  constructor(
     private busesService: BusesService,
     private router : Router,
@@ -34,26 +33,34 @@ export class UpdateBusComponent implements OnInit {
       params=> {
         this.id = params.get('id');
       }
+
     );
-    // document.getElementById('spinner').style.display = "block";
+    this.buses = history.state.data
+    console.log(this.buses);
+
+    this.bus_name = this.buses["bus_name"];
+    this.description = this.buses["description"];
+    this.number_of_seat = this.buses["number_of_seat"];
+    this.price = this.buses["price"];
+    this.img_url = this.buses["img_url"];
+    this.status =this.buses["status"];    
+    
+  }
+  
+  submit(val){
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.get("https://btal-ride.herokuapp.com/api/admin-bus/"+this.id, { headers: { Authorization: AuthStr } })
+    axios.put("https://btal-ride.herokuapp.com/api/admin-bus/"+this.buses.id, val, { headers: { Authorization: AuthStr } })
       .then(response => {
-      // document.getElementById('spinner').style.display = "none";
-       this.buses = response.data;
+        Swal.fire(
+          'Update',
+          'User updated successfully.',
+          'success'
+        )
+        this.router.navigate(['/admin/buses'])
       })
     .catch((error) => {
      console.log('error ' + error);
       });
-  }
-  
-  updateBus(){
-    console.log(this.id);
-    axios.put("https://btal-ride.herokuapp.com/api/admin/bus/"+this.id, this.form.value).then(res => {
-      this.router.navigate(['/admin/dashboard']);
-    }).catch(err => {
-      console.log(err)
-    })
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="container p-3 shadow p-3 mb-5 rounded" id="form">
     <p class=" h2 text-center font-weight-italic ">Update User</p>
-    <form name="form" #FormUpdate="ngForm" (ngSubmit)="submit(FormUpdate.value)">
+    <form name="form" #FormUpdate="ngForm" (ngSubmit)="submitPass(FormUpdate.value)">
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="bus_name">First Name</label>
@@ -31,7 +31,7 @@
             <button type="submit" class="btn btn-primary btn-sm ">
      Update
     </button>
-            <button type="button " class="btn btn-danger btn-sm" routerLink="/admin/user-profile">Cancel</button>
+            <a type="button " class="btn btn-danger btn-sm" routerLink="/admin/user-profile">Cancel</a>
         </div>
     </form>
 </div>

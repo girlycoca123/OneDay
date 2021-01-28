@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { BusesService } from 'src/app/services/buses.service';
 import { UserProfile } from 'src/app/services/models';
+import Swal from 'sweetalert2';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -16,11 +17,11 @@ export class UpdateUserComponent implements OnInit {
   user: UserProfile[];
 
   // form = new FormGroup({
-  //   firstname: new FormControl('',Validators.required),
-  //   lastname: new FormControl('', Validators.required),
-  //   contact_number: new FormControl('', Validators.required),
-  //   email_address: new FormControl('', Validators.required),
-  //   address: new FormControl('', Validators.required)
+  //   firstname: new FormControl(''),
+  //   lastname: new FormControl(''),
+  //   contact_number: new FormControl(''),
+  //   email_address: new FormControl(''),
+  //   address: new FormControl('')
   // });
 
   firstname: string ;
@@ -53,17 +54,22 @@ export class UpdateUserComponent implements OnInit {
     this.contact_number =  this.user["contact_number"]
     this.email_address =  this.user["email_address"]
     this.address =  this.user["address"]
-      
   }
 
-
-  updateUser(){
-    console.log(this.id);
-    axios.put("https://btal-ride.herokuapp.com/api/admin/client/"+this.id).then(res => {
-      this.router.navigate(['/admin/user-profile']);
-    }).catch(err => {
-      console.log(err)
-    })
+  submitPass(val){
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.put("https://btal-ride.herokuapp.com/api/admin-client/"+this.user.id, val, { headers: { Authorization: AuthStr } })
+      .then(response => {
+        Swal.fire(
+          'Update',
+          'User updated successfully.',
+          'success'
+        )
+        this.router.navigate(['/admin/user-profile']);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
 
 }

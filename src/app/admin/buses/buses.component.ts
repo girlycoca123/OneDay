@@ -53,8 +53,12 @@ export class BusesComponent implements OnInit {
     this.router.navigate(['/admin/bus_specs/' + id]);
   }
 
-  update(id) {
-    this.router.navigate(['/admin/update-bus/' + id]);
+  update(bus){
+    this.router.navigate(['/admin/update-bus/'+bus.id],{
+      state :{
+        data : bus
+      }
+    });
   }
 
   addBus() {
