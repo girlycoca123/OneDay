@@ -12,7 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class BookingFormComponent implements OnInit {
   buses: Bus[];
-
+  today:Date
   busName:any;
   
   bus = this.busesService.currentBus;
@@ -38,6 +38,7 @@ export class BookingFormComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     console.log(this.bus.price);
+    this.today = new Date
   }
 
   

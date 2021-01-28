@@ -16,9 +16,7 @@ export class BookingsService {
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get(this.url, { headers: { Authorization: AuthStr } })
       .then(response => {
-    return this.http.get(this.url);
-        
-     console.log(response);
+      return this.http.get(this.url);
       })
     .catch((error) => {
      console.log('error ' + error);
