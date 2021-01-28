@@ -16,17 +16,19 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-<<<<<<< HEAD
-=======
     this.getBuses()
   }
   getBuses() {
     //backend side
-    // this.busesService.getBuses().subscribe(buses => {
-    //   this.buses = buses as Bus[];
-    //   console.log(buses);
-    // })
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        this.buses = response.data;
+     console.log(response);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
   
 }

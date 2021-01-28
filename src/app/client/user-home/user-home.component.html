@@ -1,40 +1,10 @@
-<<<<<<< HEAD
-<nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded" style="background-color: #364ed9;">
-    <div class="container">
-        <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png" height="40px" width="100%"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main_nav">
-            <ul class="navbar-nav ml-auto">
-                <div class="dropdown">
-                    <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">
-                        User
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" (click)="logout()">Sign Out</a>
-                        <a class="dropdown-item" routerLink = 'client/history' (click)="history()">History</a>
-                    </div>
-                </div>
-            </ul>
-=======
-<nav
-  id="navbar_top"
-  class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded"
-  style="background-color: #364ed9;"
->
+<nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded"
+  style="background-color: #364ed9;">
   <div class="container">
-    <a class="navbar-brand border border-light bg-light" routerLink="/"
-      ><img src="../../assets/images/logo.png" height="40px" width="100%"
-    /></a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#main_nav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png"
+        height="40px" width="100%" /></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="main_nav">
@@ -43,22 +13,13 @@
           <a class="nav-link" routerLink="/client/history">History</a>
         </p>
         <div class="dropdown">
-          <button
-            id="admn"
-            class="float-left btn dropdown-toggle"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            style="color: white;"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">
             User
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Sign Out</a>
+            <a class="dropdown-item" (click)="logout()">Sign Out</a>
           </div>
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
         </div>
       </ul>
     </div>
@@ -67,25 +28,23 @@
 
 <!-- Buses -->
 <div class="parallax text-center">
-    <p class="display-1 font-weight-bold">Travel in our Care</p>
-    <!-- <p class="h3">Travel in our Care</p> -->
-  </div>
-  <br />
-  
-  <!-- Booking Form -->
-  <br />
-  
-  <!-- <div class="img-area mt-5 col-md-6">
-          <div class="img-area" *ngFor="let bus of buses">
-              <div class="single-img" data-toggle="modal" data-target="#bus1">
-                      {{bus.bus_name}} <img src="{{bus.img_url}}" alt="bus1" width="250px">
-              </div>
-          </div>
-      </div> -->
-  
-      <h2 class="text-center font-weight-bold">Our Buses</h2>
+  <p class="display-1 font-weight-bold">Travel in our Care</p>
+  <!-- <p class="h3">Travel in our Care</p> -->
+</div>
+<br />
 
-<div *ngFor = "let bus of buses">
+<!-- Booking Form -->
+<br />
+
+<h2 class="text-center font-weight-bold">Our Buses</h2>
+
+<div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status" style="display: none;" id="spinner">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div *ngFor="let bus of buses">
   <app-businfo [bus]="bus"> </app-businfo>
 </div>
 

@@ -138,39 +138,46 @@ style="background-color: #364ed9;"
 </nav>
 <br /><br />
 
+
 <div class="container p-3 shadow p-3 mb-5 rounded" id="form">
   <p class=" h2 text-center font-weight-italic ">Reserve your Trip</p>
-  <form name="form ">
-    <div class="form-group">
+  <form name="form" [formGroup]="form" (ngSubmit)="form.valid && booking()">
+    <div class="form-row">
+    <div class="form-group col-md-6"   >
       <label for="bus_name">Bus Name</label>
-      <input type="text"  class="form-control" disabled placeholder="{{bus.bus_name}}">
+      <input type="text"  class="form-control" formControlName="bus_name" disabled placeholder="{{bus.bus_name}}">
     </div>
+    <div class="form-group col-md-6"   >
+      <label for="status">Status</label>
+      <input type="text"  class="form-control" formControlName="status" disabled placeholder="{{ bus.status }}">
+    </div>
+  </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="sdate">Start Date</label>
-        <input type="date" name="sdate" id="" class="form-control" />
+        <input type="date" name="sdate" formControlName="start_date" class="form-control" required/>
       </div>
       <div class="form-group col-md-6">
         <label for="edate">End Date</label>
-        <input type="date" name="edate" class="form-control" />
+        <input type="date" name="edate" class="form-control" formControlName="end_date" required />
       </div>
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="price">Price</label>
-        <input type="number" disabled name="price" id="" class="form-control" placeholder="{{bus.price}}" />
+        <input type="number" class="form-control" formControlName="price" disabled placeholder="{{bus.price}}" />
       </div>
       <div class="form-group col-md-6">
         <label for="payment">Payment Method</label>
-        <select name="payment" id="" class="form-control">
-          <option value="COD">Cash on Delivery</option>
-          <option value="Paypay">Paypal</option>
-          <option value="Paymaya">Paymaya</option>
-        </select>
+        <select name="payment" class="form-control" formControlName="payment" required>
+          <option value="COH">Cash on Hand</option>
+          <option value="paypay">Paypal</option>
+          <option value="paymaya">Paymaya</option>
+        </select> 
       </div>
     </div>
     <div class="form-group ">
-      <button type="button " class="btn btn-primary btn-sm " disabled>
+      <button type="button " class="btn btn-primary btn-sm " [disabled]="!form.valid" >
         Book Now
       </button>
       <button type="button " class="btn btn-danger btn-sm" routerLink="/userhome">Cancel</button>

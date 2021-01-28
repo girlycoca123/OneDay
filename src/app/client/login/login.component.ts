@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   });
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
   }
@@ -32,10 +33,12 @@ export class LoginComponent implements OnInit {
     axios.post("https://btal-ride.herokuapp.com/api/client/login", this.form.value).then(res => {
       console.log(res.data);
       window.localStorage.setItem('client_token',res.data.access_token);
-    document.getElementById('spinner').style.display ="none";
+      window.localStorage.setItem('client_id',res.data.client_id);
+      document.getElementById('spinner').style.display ="none";
       return this.router.navigate(['/userhome']);
     }).catch(err => {
-      console.log(err)
+      alert(err);
+      document.getElementById('spinner').style.display ="none";
     })
   }
 

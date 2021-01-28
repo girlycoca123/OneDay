@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-<table class="table">
-    <thead class="thead">
-        <tr>
-            <th scope="col">Client Name</th>
-            <th scope="col">Bus Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Payment</th>
-            <th scope="col">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let booking of bookings">
-            <th scope="row">{{booking.client_name}}</th>
-            <td>{{booking.bus_name}}</td>
-            <td>{{booking.start_date}}</td>
-            <td>{{booking.end_date}}</td>
-            <td>{{booking.price}}</td>
-            <td>{{booking.payment}}</td>
-            <td><button (click) = "UpdateDriver(driver.id)" class="btn btn-primary">Update</button>
-            <button (click)="deleteDriver(driver.id)" class="btn btn-danger" style="margin-left: 10px;">Delete</button></td>
-
-        </tr>
-    </tbody>
-</table>
-=======
 <nav
   id="navbar_top"
   class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded"
@@ -63,7 +35,7 @@
             User
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">Sign Out</a>
+            <a class="dropdown-item" (click)="logout()">Sign Out</a>
           </div>
         </div>
       </ul>
@@ -92,4 +64,3 @@
       </table>
       
       
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d

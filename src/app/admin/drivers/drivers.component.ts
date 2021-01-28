@@ -62,6 +62,10 @@ export class DriversComponent implements OnInit {
       alert(err);
     })
   }
+
+  add(){
+    this.router.navigate(['admin/add-driver']);
+  }
   addDriver(){
     document.getElementById("table").style.display = "block";
   }

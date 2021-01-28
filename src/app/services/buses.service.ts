@@ -1,26 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-<<<<<<< HEAD
 import { Bus } from '../services/models';
 import axios from 'axios';
 
-=======
-import { Bus } from './models';
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
+// import { Bus } from './models';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BusesService {
-<<<<<<< HEAD
 
   bus: Bus[] = [];
 
 
   private url = 'https://btal-ride.herokuapp.com/api/admin-bus';
-=======
-  private url = 'https://btal-ride.herokuapp.com/api/admin/bus';
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
 
   constructor(private http: HttpClient) {}
 
@@ -51,7 +44,6 @@ export class BusesService {
   //   }
   // ];
 
-<<<<<<< HEAD
   getBuses(){
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get(this.url, { headers: { Authorization: AuthStr } })
@@ -64,19 +56,12 @@ export class BusesService {
      console.log('error ' + error);
       });
   }
+  currentBus:any;
 
   addBus(bus: Bus){
     this.bus.push(bus);
-=======
-  currentBus:any;
-
-  getBuses() {
-    return this.http.get(this.url);
-
-    // return this.buses
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
   }
-
+  
   updateBus() {
     alert('update');
   }

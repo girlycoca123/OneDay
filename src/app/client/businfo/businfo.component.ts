@@ -2,6 +2,7 @@ import { Component, OnInit,Input } from '@angular/core';
 import { Bus } from '../../services/models';
 import { BusesService } from '../../services/buses.service';
 import { Router } from '@angular/router';
+import axios from 'axios';
 
 
 
@@ -21,13 +22,13 @@ export class BusinfoComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.buses = this.busesService.getBuses();
-    console.log(this.buses);
+    
   }
 
-  book(){
+  book(id){
     this.busesService.currentBus = this.bus;
-    this.router.navigate(["client/booking"])
+    this.router.navigate(["/userhome/client/booking/"]);
+    
   }
 
   getBuses() {

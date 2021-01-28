@@ -38,48 +38,53 @@ this.hidden = !this.hidden;
   }
 
   getBuses(){
-<<<<<<< HEAD
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
       .then(response => {
-        
-     console.log(response);
+        this.buses = response.data;
+      document.getElementById('spinner').style.display = "none";
+      document.getElementById('container').style.display = "block";
       })
     .catch((error) => {
      console.log('error ' + error);
       });
     }
-  
-=======
-    // this.busesService. getBuses().subscribe(buses => {
-    //   this.buses = buses as Bus[];
-    //   console.log(buses);
-    // })
+  view(id){
+    this.router.navigate(['/admin/bus_specs/'+id]);
   }
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
   update(id){
     this.router.navigate(['/admin/update-bus/'+id]);
   }
   addBus(){
-    document.getElementById("table").style.display = "block";
+    document.getElementById('form').style.display = "block";
+    document.getElementById('btnClick').style.display = "none";
+    this.router.navigate(['/admin/add-bus'])
+
   }
-  addnewBus(){
-    axios.post("https://btal-ride.herokuapp.com/api/admin/bus").then(res => {
-    document.getElementById("table").style.display = "none";
-      this.router.navigate(['/admin/dashboard']);
-    }).catch(err => {
-      console.log(err)
-    })
+  addNewBus(){
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.post("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        this.router.navigate(['/admin/buses'])
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
-  close(){
-    document.getElementById('table').style.display = "none";
+  cancel(){
+    document.getElementById('form').style.display = "none";
+    document.getElementById('btnClick').style.display = "block";
   }
   delete(id){
-    axios.delete("https://btal-ride.herokuapp.com/api/admin/bus"+id).then(res => {
-      this.router.navigate(['/admin/dashboard']);
-    }).catch(err => {
-      console.log(err)
-    })
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.delete("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        this.router.navigate(['/admin/buses'])
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
 
   // delDialog(){

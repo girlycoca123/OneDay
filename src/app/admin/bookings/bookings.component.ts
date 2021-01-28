@@ -25,11 +25,10 @@ constructor(
 
   getBookings(){
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.get("https://btal-ride.herokuapp.com/api/admin-booking", { headers: { Authorization: AuthStr } })
+    axios.get("https://btal-ride.herokuapp.com/api/client-booking", { headers: { Authorization: AuthStr } })
       .then(response => {
         this.bookings = response.data;
         console.log(this.bookings);
-        
       })
     .catch((error) => {
      console.log('error ' + error);

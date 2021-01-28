@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -10,19 +11,15 @@ import axios from 'axios';
 export class RegisterComponent implements OnInit {
 
   form = new FormGroup({
-<<<<<<< HEAD
-    name: new FormControl('',Validators.required),
-    email: new FormControl('', [
-=======
     firstname: new FormControl('', Validators.required),
     lastname: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
-    contact_number: new FormControl('',[
-        Validators.required,
-        Validators.pattern("[0-9]{12}")
-    ]),
+    // contact_number: new FormControl('',[
+    //     Validators.required,
+    //     Validators.minLength(11)
+    // ]),
+    contact_number: new FormControl('', Validators.required),
     email_address: new FormControl('', [
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
       Validators.required,
       Validators.email
     ]),
@@ -33,49 +30,38 @@ export class RegisterComponent implements OnInit {
 
   });
 
-<<<<<<< HEAD
-  constructor() { }
-=======
+
   constructor(private router: Router) { }
   get firstname() {
     return this.form.get('firstname')
   }
-  get lastname(){
+  get lastname() {
     return this.form.get('lastname')
   }
-  get address(){
+  get address() {
     return this.form.get('address')
   }
-  get contact_number(){
+  get contact_number() {
     return this.form.get('contact_number')
   }
-  get email_address(){
+  get email_address() {
     return this.form.get('email_address')
   }
-  get password(){
+  get password() {
     return this.form.get('password')
   }
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
 
   ngOnInit(): void {
   }
 
   register() {
-    console.log(this.form.value);
-    /**
-     * axios [post, get, put, delete ]
-     * axios.post(url, data).then(res=>{}).catch(err=>{})
-     * axios.get(url).then(res=>{}).catch(err=>{})
-     * axios.put(url, data).then(res=>{}).catch(err=>{})
-     * axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
-     */
-    
-    axios.post("https://btal-ride.herokuapp.com/api/admin/register", this.form.value).then(res => {
-      console.log(res.data)
-      /**
-       * token => res.data.token
-       * localStorage.setItem('token', res.data.token)
-       */
+    document.getElementById('spinner').style.display = "block";
+    axios.post("https://btal-ride.herokuapp.com/api/client/register", this.form.value).then(res => {
+      console.log(res.data);
+      window.localStorage.setItem('client_token',res.data.access_token);
+      window.localStorage.setItem('client_id',res.data.id);
+      document.getElementById('spinner').style.display ="none";
+      return this.router.navigate(['/userhome']);
     }).catch(err => {
       console.log(err)
     })

@@ -20,21 +20,12 @@ import { DriversComponent } from './admin/drivers/drivers.component';
 import { UserProfileComponent } from './admin/user-profile/user-profile.component';
 import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import {MatIconModule} from '@angular/material/icon';
-<<<<<<< HEAD
-=======
 import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
 import { BookingFormComponent } from './client/booking-form/booking-form.component';
 import { BusinfoComponent } from './client/businfo/businfo.component';
 import { HistoryComponent } from './client/history/history.component';
-// import {MatIconModule} from '@angular/material/icon';
-
-
-
-
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
 
 @NgModule({
   declarations: [
@@ -53,8 +44,6 @@ import { HistoryComponent } from './client/history/history.component';
     DriversComponent,
     UserProfileComponent,
     UpdateBusComponent,
-<<<<<<< HEAD
-=======
     BusSpecsComponent,
     UpdateUserComponent,
     UpdateDriverComponent,
@@ -62,7 +51,6 @@ import { HistoryComponent } from './client/history/history.component';
     BusinfoComponent,
     HistoryComponent,
   
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
   ],
   imports: [
     BrowserModule,
@@ -71,7 +59,6 @@ import { HistoryComponent } from './client/history/history.component';
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    // MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

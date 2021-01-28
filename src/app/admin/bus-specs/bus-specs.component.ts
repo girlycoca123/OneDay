@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Bus } from '../../services/models';
 import { BusesService  } from '../../services/buses.service'
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import axios from 'axios';
 
 @Component({
   selector: 'app-bus-specs',
@@ -10,22 +11,36 @@ import { Router } from '@angular/router';
 })
 export class BusSpecsComponent implements OnInit {
 
-  
   buses:  Bus[];
-
+  
   constructor(
     private busesService: BusesService,
-    private router :Router
-    ) { }
+    private router :Router,
+    private route : ActivatedRoute
 
+    ) { }
+  id:any;
   ngOnInit(): void {
-    this.getBuses()
+    this.getBuses();
+    this.route.paramMap.subscribe(
+      params=> {
+        this.id = params.get('id');
+      }
+    );
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin-bus/"+this.id, { headers: { Authorization: AuthStr } })
+      .then(response => {
+        console.log(response.data);
+        
+       this.buses = response.data;
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
   }
+
   getBuses(){
-    // this.busesService. getBuses().subscribe(buses => {
-    //   this.buses = buses as Bus[];
-    //   console.log(buses);
-    // })
+    
   }
 
 }

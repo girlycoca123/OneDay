@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import axios from 'axios';
+
 
 @Component({
   selector: 'app-adminregister',
@@ -20,26 +22,19 @@ export class AdminregisterComponent implements OnInit {
     ])
 
   });
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
   register() {
-    console.log(this.form.value);
-    /**
-     * axios [post, get, put, delete ]
-     * axios.post(url, data).then(res=>{}).catch(err=>{})
-     * axios.get(url).then(res=>{}).catch(err=>{})
-     * axios.put(url, data).then(res=>{}).catch(err=>{})
-     * axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
-     */
-    
+    document.getElementById('spinner').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/admin/register", this.form.value).then(res => {
-      console.log(res.data)
-      /**
-       * token => res.data.token
-       * localStorage.setItem('token', res.data.token)
-       */
+      console.log(res.data);
+      window.localStorage.setItem('admin_token',res.data.access_token);
+    document.getElementById('spinner').style.display ="none";
+      return this.router.navigate(['/admin/user-profile']);
     }).catch(err => {
       console.log(err)
     })

@@ -1,6 +1,25 @@
-<div *ngFor="let bus of buses">
-    <h4>Bus Name: {{bus.bus_name}}</h4>
-    <h4>Description: {{bus.description}}</h4>
-    <h4>Status: {{bus.status}}</h4>
-    <h4>Price {{bus.price}}</h4>
-</div>
+<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status" style="display: none;" id="spinner">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+<table class="table">
+    <thead class="thead">
+        <tr>
+            <th scope="col">Bus Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Number of Seats</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr>
+            <th scope="row">{{buses.bus_name}}</th>
+            <td>{{buses.description}}</td>
+            <td>{{buses.price}}</td>
+            <td>{{buses.number_of_seat}}</td>
+            <td>{{buses.status}}</td> -->
+        <!-- </tr> -->
+    </tbody>
+</table>

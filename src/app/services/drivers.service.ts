@@ -9,7 +9,7 @@ import axios from 'axios';
 })
 export class DriversService {
 
-  driver: Driver[] = [];
+  driver: Driver[];
 
   private url = "https://btal-ride.herokuapp.com/api/admin-driver";
 

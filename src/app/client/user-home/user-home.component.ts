@@ -29,42 +29,43 @@ export class UserHomeComponent implements OnInit {
     private busesService: BusesService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
   id: any;
   ngOnInit(): void {
     // Backend side
     this.getBuses();
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
+      const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token'));
+      axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+        .then(response => {
+          this.buses = response.data;
+        })
+        .catch((error) => {
+          console.log('error ' + error);
+        });
     });
 
     // this.buses = this.busesService.getBuses();
     // console.log(this.buses);
   }
-<<<<<<< HEAD
- 
-  getBuses(){
-    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token')); 
+
+  getBuses() {
+    document.getElementById('spinner').style.display = "block";
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('client_token'));
     axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
       .then(response => {
-     console.log(response.data);
+        document.getElementById('spinner').style.display = "none";
       })
-    .catch((error) => {
-     console.log('error ' + error);
+      .catch((error) => {
+        console.log('error ' + error);
       });
-    }
-=======
-  
-  getBuses() {
-    //backend side
-    this.busesService.getBuses().subscribe(buses => {
-      this.buses = buses as Bus[];
-      console.log(buses);
-    })
-    // return this.busesService.getBuses;
   }
 
->>>>>>> 858e2b168435f1331847979aa9b1fb1788ebf23d
+
+  // return this.busesService.getBuses;
+
+
   booking() {
     console.log(this.form.value);
     axios
@@ -79,11 +80,12 @@ export class UserHomeComponent implements OnInit {
         console.log(err);
       });
   }
-  logout(){
+  logout() {
     window.localStorage.removeItem('client_token');
+    window.localStorage.removeItem('client_id');
     this.router.navigate(['/']);
   }
-  history(){
+  history() {
     this.router.navigate(['client/history']);
   }
 }

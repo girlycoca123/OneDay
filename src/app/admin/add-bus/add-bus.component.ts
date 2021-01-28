@@ -28,14 +28,16 @@ export class AddBusComponent implements OnInit {
   ngOnInit(): void {
     
   }
-  addBus(bus){
-    this.busesService.addBus(bus);
+  addNewBusbus(bus){
     console.log(this.form.value);
-    axios.post("https://btal-ride.herokuapp.com/api/admin/bus", this.form.value).then(res => {
-      this.router.navigate(['/admin/dashboard']);
-    }).catch(err => {
-      console.log(err)
-    })
-    this.router.navigate(['admin/buses']);
-  }
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    axios.get("https://btal-ride.herokuapp.com/api/admin-bus", { headers: { Authorization: AuthStr } })
+      .then(response => {
+        // this.router.navigate(['/admin/bus']);
+        this.busesService.addBus(bus);
+      })
+    .catch((error) => {
+     console.log('error ' + error);
+      });
+    }
 }
