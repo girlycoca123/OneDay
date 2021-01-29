@@ -22,14 +22,13 @@ export class UpdateDriverComponent implements OnInit {
   license: string;
   status: boolean;
   salary: number;
-
- 
-
+  address:string;
+  id:any;
+  
   constructor(
     private router : Router,
     private route : ActivatedRoute) { }
 
-  id: any;
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
@@ -39,8 +38,9 @@ export class UpdateDriverComponent implements OnInit {
   
     this.driver = history.state.data
     console.log(this.driver);
-    
-    this.firstname =  this.driver["firstname"]
+    this.id = this.driver["id"];
+    console.log(this.id);
+    this.firstname =  this.driver["firstname"];
     this.lastname = this.driver["lastname"];
     this.contact_number = this.driver["contact_number"];
     this.address = this.driver["address"];
@@ -51,11 +51,11 @@ export class UpdateDriverComponent implements OnInit {
   }
 
   submit(val){
-    console.log(val);
-    
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.put("https://btal-ride.herokuapp.com/api/admin-driver/"+this.driver.id, val, { headers: { Authorization: AuthStr } })
+    axios.put("https://btal-ride.herokuapp.com/api/admin-driver/"+this.id, val, { headers: { Authorization: AuthStr } })
       .then(response => {
+      document.getElementById('spinner').style.display = "none";
         Swal.fire(
           'Update',
           'User updated successfully.',

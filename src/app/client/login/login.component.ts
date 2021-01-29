@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +30,14 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    document.getElementById('spinner').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/client/login", this.form.value).then(res => {
       window.localStorage.setItem('client_token',res.data.access_token);
       window.localStorage.setItem('client_id',res.data.client_id);
+      document.getElementById('spinner').style.display = "block";
       return this.router.navigate(['/userhome']);
     }).catch(err => {
-      alert(err);
+      Swal.fire('Oppss','Error Login, Please Log In Again','warning');
       document.getElementById('spinner').style.display ="none";
     })
   }

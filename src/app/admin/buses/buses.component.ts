@@ -42,7 +42,6 @@ export class BusesComponent implements OnInit {
       .then(response => {
         this.buses = response.data;
         document.getElementById('spinner').style.display = "none";
-        document.getElementById('container').style.display = "block";
       })
       .catch((error) => {
         console.log('error ' + error);

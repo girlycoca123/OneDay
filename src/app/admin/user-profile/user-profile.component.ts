@@ -39,10 +39,11 @@ export class UserProfileComponent implements OnInit {
   }
 
   getUsers() {
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
     axios.get("https://btal-ride.herokuapp.com/api/admin-client", { headers: { Authorization: AuthStr } })
       .then(response => {
-        console.log(response.data);
+        document.getElementById('spinner').style.display = "none";
         this.users = response.data;
       })
       .catch((error) => {

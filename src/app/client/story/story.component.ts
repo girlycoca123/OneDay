@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-landing-page',
-  templateUrl: './landing-page.component.html',
-  styleUrls: ['./landing-page.component.css']
+  selector: 'app-story',
+  templateUrl: './story.component.html',
+  styleUrls: ['./story.component.css']
 })
-export class LandingPageComponent implements OnInit {
+export class StoryComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +17,4 @@ export class LandingPageComponent implements OnInit {
     window.localStorage.removeItem('client_id');
     this.router.navigate(['/home'])
   }
-
 }

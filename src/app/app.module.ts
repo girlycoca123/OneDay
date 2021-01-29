@@ -30,6 +30,7 @@ import { AddBusComponent } from './admin/add-bus/add-bus.component';
 import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 import { LandingPageComponent } from './client/landing-page/landing-page.component';
 import { AboutNotLoginComponent } from './client/about-not-login/about-not-login.component';
+import { StoryComponent } from './client/story/story.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { AboutNotLoginComponent } from './client/about-not-login/about-not-login
     AddDriverComponent,
     LandingPageComponent,
     AboutNotLoginComponent,
+    StoryComponent,
   
   ],
   imports: [

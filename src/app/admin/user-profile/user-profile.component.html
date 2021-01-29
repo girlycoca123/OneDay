@@ -1,3 +1,9 @@
+<strong><h1>Clients: </h1></strong>
+<div class="text-center">
+    <div class="spinner-border" role="status" style="display: none;" id="spinner">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <table class="table">
     <thead class="thead">
         <tr>
@@ -5,7 +11,7 @@
             <th scope="col">Contact Number</th>
             <th scope="col">Address</th>
             <th scope="col">Email Address</th>
-            <th scope="col">Actions</th>
+            <th colspan="2" class="text-center">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +20,10 @@
             <th scope="row">{{user.contact_number}}</th>
             <td>{{user.address}}</td>
             <td>{{user.email_address}}</td>
-            <td><button class="btn btn-primary" (click)="update(user)">Update</button>
+            <td>
+                <button class="btn btn-primary" (click)="update(user)">Update</button>
+            </td>
+            <td>
                 <button class="btn btn-danger" style="margin-left:20px;" (click)=" alertConfirmation(user.id) ">Delete</button>
             </td>
         </tr>

@@ -47,15 +47,25 @@ export class BookingFormComponent implements OnInit {
     return this.busesService.getBuses;
   }
 
+  logout(){
+    window.localStorage.removeItem('client_token');
+    window.localStorage.removeItem('client_id');
+    this.router.navigate(['home']);
+  }
+
   booking(){
+    document.getElementById('spinner').style.display = "block";
     const client_id = window.localStorage.getItem('client_id');
     axios.post("https://btal-ride.herokuapp.com/api/client/booking/send/"+client_id, this.form.value)
       .then(response => {
+      document.getElementById('spinner').style.display = "none";
         Swal.fire('Hi', 'Thank You have a nice trip', 'success');
       this.router.navigate(['/userhome']);
       })
     .catch((error) => {
-     console.log('error ' + error);
+     Swal.fire('Sorry for inconvenience','Something went wrong please try again','warning');
+     document.getElementById('spinner').style.display = "none";
       });
   }
+
 }

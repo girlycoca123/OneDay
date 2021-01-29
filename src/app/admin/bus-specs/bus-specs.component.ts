@@ -12,7 +12,7 @@ import axios from 'axios';
 export class BusSpecsComponent implements OnInit {
 
   buses:  Bus[];
-  
+  description:string;
   constructor(
     private busesService: BusesService,
     private router :Router,
@@ -22,6 +22,7 @@ export class BusSpecsComponent implements OnInit {
   id:any;
   ngOnInit(): void {
     this.getBuses();
+    document.getElementById('spinner').style.display = "block";
     this.route.paramMap.subscribe(
       params=> {
         this.id = params.get('id');
@@ -32,7 +33,7 @@ export class BusSpecsComponent implements OnInit {
       .then(response => {
         console.log(response.data);
        this.buses = response.data;
-       
+      document.getElementById('spinner').style.display = "none";
       })
     .catch((error) => {
      console.log('error ' + error);

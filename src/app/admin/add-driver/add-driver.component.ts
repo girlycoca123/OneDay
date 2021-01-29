@@ -32,10 +32,12 @@ export class AddDriverComponent implements OnInit {
   }
 
   addDriver(){
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
     axios.post("https://btal-ride.herokuapp.com/api/admin-driver", this.form.value, { headers: { Authorization: AuthStr } })
       .then(response => {
         Swal.fire('Driver', 'Added Successfully', 'success');
+        document.getElementById('spinner').style.display = "none";
         this.router.navigate(['/admin/drivers']);
       })
       .catch((error) => {

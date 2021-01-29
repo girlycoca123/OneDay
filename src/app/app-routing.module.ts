@@ -18,7 +18,6 @@ import { UpdateBusComponent } from './admin/update-bus/update-bus.component';
 import { UpdateUserComponent } from './admin/update-user/update-user.component';
 import { UpdateDriverComponent } from './admin/update-driver/update-driver.component';
 import { BusSpecsComponent } from './admin/bus-specs/bus-specs.component';
-import { AboutComponent } from './client/about/about.component';
 import { TokenGuard } from './guards/token/token.guard';
 import { ClientGuard } from './guards/token/client.guard';
 import { BookingFormComponent } from './client/booking-form/booking-form.component';
@@ -27,19 +26,24 @@ import { AddDriverComponent } from './admin/add-driver/add-driver.component';
 import { AddBusComponent } from './admin/add-bus/add-bus.component';
 import { LandingPageComponent } from './client/landing-page/landing-page.component';
 import { AboutNotLoginComponent } from './client/about-not-login/about-not-login.component';
+
+import { StoryComponent } from './client/story/story.component';
+
 // import { BusinfoComponent } from './client/businfo/businfo.component';
 
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  
   { path: 'home', component: HomeComponent },
 
   {path : 'client/landing-page', component: LandingPageComponent},
   {path: 'about', component: AboutNotLoginComponent},
   {path: 'client/history', component:HistoryComponent},
-  { path:'userhome', component:UserHomeComponent},
-  {path: 'client/about', component: AboutComponent},
+  { path:'userhome', component:UserHomeComponent, canActivate :[ClientGuard]},
+  
+  {path: 'client/story', component: StoryComponent},
 
   { path: 'client/register', component: RegisterComponent },
   { path: 'client/login', component: LoginComponent },
@@ -49,7 +53,8 @@ const routes: Routes = [
   { path: 'userhome', component: UserHomeComponent, canActivate :[ClientGuard] },
   { path: 'admin/login', component: AdminloginComponent },
   { path: 'admin/register', component: AdminregisterComponent },
-  { path: 'userhome/client/booking', component:BookingFormComponent },
+  { path: 'userhome/client/booking', component:BookingFormComponent, canActivate :[ClientGuard] },
+
 
   {
     path: 'admin', component: NavbarComponent , canActivate :[TokenGuard],

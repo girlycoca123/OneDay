@@ -14,13 +14,14 @@
     justify-content: flex-start;
 }
 
-.single-img {
+
+/* .single-img {
     padding: 0 20px 20px;
     margin: 10px;
     border-radius: 5px 5px 5px;
     box-shadow: 5px 5px 5px lightgray;
     background-color: white;
-}
+} */
 
 img:hover {
     opacity: 0.5;
@@ -87,3 +88,9 @@ img:hover {
     border-radius: 5px 5px 5px;
     margin-top: 50px;
 }
+
+
+/* .container {
+    margin: 10px;
+    padding: 10;
+} */

@@ -1,4 +1,12 @@
-<button class="btn btn-primary" type="submit" (click)="add()">Add Driver</button>
+<strong><h1>Drivers: </h1></strong>
+
+
+<button class="btn btn-primary mb-3 float-right mr-1" type="submit" (click)="add()">Add Driver</button>
+<div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status" style="display: none;" id="spinner">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
 <table class="table p-3">
     <thead class="thead">
         <tr>

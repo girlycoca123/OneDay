@@ -1,25 +1,27 @@
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded" style="background-color: #364ed9;">
     <div class="container">
-        <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png" height="40px" width="100%" /></a>
+        <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png" height="45px" width="auto" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+                  <span class="navbar-toggler-icon"></span>
+                </button>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ml-auto">
                 <p class="nav-item">
                     <a class="nav-link" routerLink="/client/landing-page">Home</a>
-                    <p class="nav-item">
-                        <a class="nav-link" routerLink="/userhome">Buses</a>
-                    </p>
-                    <p class="nav-item">
-                        <a class="nav-link" routerLink="/client/history">History</a>
-                    </p>
-                    <div class="dropdown">
-                        <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">User</button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" (click)="logout()">Sign Out</a>
-                        </div>
+                </p>
+                <p class="nav-item">
+                    <a class="nav-link" routerLink="/userhome">Buses</a>
+                </p>
+
+                <p class="nav-item active">
+                    <a class="nav-link" routerLink="/client/story">About</a>
+                </p>
+                <div class="dropdown">
+                    <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">User</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" (click)="logout()">Sign Out</a>
                     </div>
+                </div>
             </ul>
         </div>
     </div>
@@ -29,10 +31,10 @@
     <div>
         <p class="h1 story">Our Story</p>
         <svg height="80" width="400">
-                <g fill="none">
-                  <path stroke="white" stroke-width="6" d="M5 10 1200 0"/>
-                </g>
-        </svg>
+                    <g fill="none">
+                      <path stroke="white" stroke-width="6" d="M5 10 1200 0"/>
+                    </g>
+            </svg>
         <p class="tag">Bus Rental and Ride Corporation</p>
         <q>Enjoy the Ride with no Fear</q>
     </div>
@@ -58,5 +60,4 @@
     <p>
         All drivers, maintenance personnel and staff undergo yearly medical and drug testing by a reputable DOH accredited industrial diagnostic center.</p>
 </div>
-
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>

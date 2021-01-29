@@ -46,8 +46,10 @@ export class UserHomeComponent implements OnInit {
   }
 
   getBuses() {
+    document.getElementById('spinner').style.display = "block";
     axios.get("https://btal-ride.herokuapp.com/api/client/buses")
       .then(response => {
+      document.getElementById('spinner').style.display = "none";
         console.log(response);
       })
       .catch((error) => {

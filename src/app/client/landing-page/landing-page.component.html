@@ -1,24 +1,25 @@
 <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark sticky-top shadow-lg shadow-lg p-3 mb-0 rounded rounded" style="background-color: #364ed9;">
     <div class="container">
-        <a class="navbar-brand border border-light bg-light" routerLink="/"><img src="../../assets/images/logo.png" height="40px" width="100%" /></a>
+        <a class="navbar-brand border border-light bg-light" routerLink="/landing-page"><img src="../../assets/images/logo.png" height="45px" width="auto" /></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav ml-auto">
-                <p class="nav-item">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/client/landing-page">Home</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" routerLink="/userhome">Buses</a>
-                </p>
-                <p class="nav-item">
-                    <a class="nav-link" routerLink="/client/about">About</a>
-                </p>
-                <p class="nav-item">
-                    <a class="nav-link" routerLink="/client/history">History</a>
-                </p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/client/story">About</a>
+                </li>
+
                 <div class="dropdown">
                     <button id="admn" class="float-left btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" style="color: white;" aria-haspopup="true" aria-expanded="false">User</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Sign Out</a>
+                        <a class="dropdown-item" (click)="logout()">Sign Out</a>
                     </div>
                 </div>
             </ul>
@@ -42,7 +43,7 @@
             <h1 style="font-size: 5vw;font-family:'Didact Gothic',sans-serif;text-shadow: 2px 3px yellow">Bus Rental And Ride</h1>
             <br>
             <br>
-            <span><a routerLink="/client/login" type="button" class="btn btn-primary"
+            <span><a routerLink="/userhome/client/booking" type="button" class="btn btn-primary"
                         style="font-size: 2vw;font-family:'Didact Gothic',sans-serif;">Book Now >>></a></span>
         </div>
         <div class="carousel-item">
@@ -149,10 +150,10 @@
 
 <div class="container row" style="padding: 5rem;">
     <div class="col">
-        <p class="h1" style="margin-left:30%">Get to Now us</p>
+        <p class="h1" style="margin-left:30%">Get to Know us</p>
     </div>
     <div class="col">
-        <button type="button" class="btn btn-large btn-lg btn-warning rounded" routerLink="/client/about">Learn More</button>
+        <button type="button" class="btn btn-large btn-lg btn-warning rounded" routerLink="/client/story">Learn More</button>
     </div>
 </div>
 
@@ -160,95 +161,43 @@
 
 <div class=" features">
     <div class="row" style="background-color:#e0dabf;opacity: 0.4;margin-right: 50%; margin-top: 1rem">
-        <p class="main">Main Features</p>
+        <p class="main">Rent a bus for your:</p>
+    </div>
+    <div class="row " style="margin-top: 1rem">
+        <div class="column shadow p-3 mb-5 bg-white rounded hover">
+            <img src="../../../assets/images/company1.png " alt="company " style="width:100% ">
+            <h2>Company Trip</h2>
+            <p>Book a high end coach for a company trip, an incentive tour for your employees or a trip to promote your product, let us know your thoughts</p>
+        </div>
+        <div class="column shadow p-3 mb-5 bg-white rounded hover">
+            <img src="../../../assets/images/company.png " alt="school " style="width:100% ">
+            <h2>College Trips</h2>
+            <p>Bus Rental and Ride offers coach hire school trips and excursions, you can tailor the trip according to your desires and plans. We will help you find the right coach.</p>
+        </div>
+        <div class="column shadow p-3 mb-5 bg-white rounded hover">
+            <img src="../../../assets/images/wedding.png " alt="wedding " style="width:100% ">
+            <h2>Wedding Trip</h2>
+            <p>Organizing coach transportation for your wedding guests? We would be happy to assist, we arrange a coach to pick up your guest at the airport or to bring them from the ferry to hotel</p>
+        </div>
     </div>
     <div class="row" style="margin-top: 1rem">
-        <!-- features -->
-        <div class="column shadow p-3 mb-5 bg-white rounded ">
-            <h4>Blue Hybrid Bus</h4>
-            <img src="../../assets/images/bus5.jpg " alt="Forest " style="width:100% ">
-            <p>Airconated bus with big space and comfortable leather chain...</p>
-            <button type="button " class="btn btn-primary btn-lg btn-block " data-toggle="modal " data-target="#exampleModal1 ">
-                    Details >>> </button>
-            <div class="modal fade " id="exampleModal1 " tabindex="0 " role="dialog " aria-labelledby="exampleModalLabel1 " aria-hidden="true ">
-                <div class="modal-dialog modal-dialog-centered " role="document ">
-                    <div class="modal-content ">
-                        <div class="modal-header ">
-                            <h5 class="modal-title " id="exampleModalLabel1 ">Blue Hybrid Bus</h5>
-                            <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
-                                    <span aria-hidden="true ">&times;</span>
-                                </button>
-                        </div>
-                        <div class="modal-body ">
-                            <p>Description: Airconated bus with big space and comfortable leather chain</p>
-                            <p>No of seats: 25 seats</p>
-                            <p>Price: php.2000</p>
-                        </div>
-                        <div class="modal-footer ">
-                            <a routerLink="/client/login " type="button " class="btn btn-primary ">Book Now</a>
-
-
-                            <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="column shadow p-3 mb-5 bg-white rounded hover">
+            <img src="../../../assets/images/friends.png " alt="friends " style="width:100% ">
+            <h2>Group Trip</h2>
+            <p>Hire a coach for a half, full or multi-day sightseeing trip, use our booking engine to customize your trip. Need help, here you can find some inspiration here</p>
         </div>
-        <div class="column shadow p-3 mb-5 bg-white rounded ">
-            <h4>Low-Floor Bus</h4>
-            <img src="../../assets/images/bus6.jpg " alt="Mountains " style="width:100% ">
-            <p>Airconated bus with big space and comfortable leather chain...</p>
-            <button type="button " class="btn btn-primary btn-lg btn-block " data-toggle="modal " data-target="#exampleModal2 ">Details >>> </button>
-            <div class="modal fade " id="exampleModal2 " tabindex="1 " role="dialog " aria-labelledby="exampleModalLabel2 " aria-hidden="true ">
-                <div class="modal-dialog modal-dialog-centered " role="document ">
-                    <div class="modal-content ">
-                        <div class="modal-header ">
-                            <h5 class="modal-title " id="exampleModalLabel2 ">Low-Floor Bus</h5>
-                            <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
-                                    <span aria-hidden="true ">&times;</span>
-                                </button>
-                        </div>
-                        <div class="modal-body ">
-                            <p>Description: Airconated bus with 4 television and adjustable passenger's chairs</p>
-                            <p>No of seats: 40 seats</p>
-                            <p>Price: php.5000</p>
-                        </div>
-                        <div class="modal-footer ">
-                            <a routerLink="/client/login " type="button " class="btn btn-primary ">Book Now</a>
-                            <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="column shadow p-3 mb-5 bg-white rounded hover">
+            <img src="../../../assets/images/family.png " alt="family " style="width:100% ">
+            <h2>Family Trips</h2>
+            <p>Family Reunion is very important and Bus Rental and Ride will help you achieve that to journey on many miles with you family and relatives</p>
         </div>
-        <div class="column shadow p-3 mb-5 bg-white rounded ">
-            <h4>Trolley Bus</h4>
-            <img src="../../assets/images/bus7.jpg " alt="Mountains " style="width:100% ">
-            <p>Airconated bus with big space and comfortable leather chain...</p>
-            <button type="button " class="btn btn-primary btn-lg btn-block " data-toggle="modal " data-target="#exampleModal3 ">Details >>> </button>
-            <div class="modal fade " id="exampleModal3 " tabindex="2 " role="dialog " aria-labelledby="exampleModalLabel3 " aria-hidden="true ">
-                <div class="modal-dialog modal-dialog-centered " role="document ">
-                    <div class="modal-content ">
-                        <div class="modal-header ">
-                            <h5 class="modal-title " id="exampleModalLabel3 ">Trolley Bus</h5>
-                            <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
-                                    <span aria-hidden="true ">&times;</span>
-                                </button>
-                        </div>
-                        <div class="modal-body ">
-                            <p>Description: Airconated bus with 4 television</p>
-                            <p>No of seats: 30 seats</p>
-                            <p>Price: php.3000</p>
-                        </div>
-                        <div class="modal-footer ">
-                            <a routerLink="/client/login " type="button " class="btn btn-primary ">Book Now</a>
-                            <button type="button " class="btn btn-secondary " data-dismiss="modal ">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="column shadow p-3 mb-5 bg-white rounded hover">
+            <img src="../../../assets/images/party.png " alt="event " style="width:100% ">
+            <h2>Event Trip</h2>
+            <p>Organizing a music festival, a youth tournament, a convention or any other type of event, let us help with organizing coaches for all your guests.</p>
         </div>
     </div>
+
     <br>
 
     <app-footer></app-footer>

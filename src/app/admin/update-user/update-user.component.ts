@@ -48,6 +48,8 @@ export class UpdateUserComponent implements OnInit {
         this.id = params.get('id');
       });
     this.user = history.state.data
+    this.id = this.user["id"];
+    console.log(this.id)
     console.log(this.user["firstname"]);
     this.firstname =  this.user["firstname"]
     this.lastname =  this.user["lastname"]
@@ -57,9 +59,11 @@ export class UpdateUserComponent implements OnInit {
   }
 
   submitPass(val){
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.put("https://btal-ride.herokuapp.com/api/admin-client/"+this.user.id, val, { headers: { Authorization: AuthStr } })
+    axios.put("https://btal-ride.herokuapp.com/api/admin-client/"+this.id, val, { headers: { Authorization: AuthStr } })
       .then(response => {
+      document.getElementById('spinner').style.display = "none";
         Swal.fire(
           'Update',
           'User updated successfully.',

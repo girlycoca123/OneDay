@@ -37,20 +37,21 @@ export class UpdateBusComponent implements OnInit {
     );
     this.buses = history.state.data
     console.log(this.buses);
-
+    this.id = this.buses["id"];
     this.bus_name = this.buses["bus_name"];
     this.description = this.buses["description"];
     this.number_of_seat = this.buses["number_of_seat"];
     this.price = this.buses["price"];
     this.img_url = this.buses["img_url"];
     this.status =this.buses["status"];    
-    
   }
   
   submit(val){
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
-    axios.put("https://btal-ride.herokuapp.com/api/admin-bus/"+this.buses.id, val, { headers: { Authorization: AuthStr } })
+    axios.put("https://btal-ride.herokuapp.com/api/admin-bus/"+this.id, val, { headers: { Authorization: AuthStr } })
       .then(response => {
+      document.getElementById('spinner').style.display = "none";
         Swal.fire(
           'Update',
           'User updated successfully.',

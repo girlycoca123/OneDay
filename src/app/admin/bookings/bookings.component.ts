@@ -27,11 +27,11 @@ constructor(
   hidden = true;
 
   getBookings(){
-    document.getElementById('loading').style.display = "block";
+    document.getElementById('spinner').style.display = "block";
     const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
     axios.get("https://btal-ride.herokuapp.com/api/client-booking", { headers: { Authorization: AuthStr } })
       .then(response => {
-        document.getElementById('loading').style.display = "none";
+        document.getElementById('spinner').style.display = "none";
         this.bookings = response.data;
         console.log(this.bookings);
       })

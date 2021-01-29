@@ -1,5 +1,10 @@
 <div class="container p-3 shadow p-3 mb-5 rounded" id="form">
     <p class=" h2 text-center font-weight-italic ">Add Driver</p>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" style="display: none;" id="spinner">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
     <form name="form" [formGroup]="form" (ngSubmit)="addDriver()">
         <div class="form-row">
             <div class="form-group col-md-6">
