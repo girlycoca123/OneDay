@@ -59,7 +59,7 @@ export class BookingFormComponent implements OnInit {
     axios.post("https://btal-ride.herokuapp.com/api/client/booking/send/"+client_id, this.form.value)
       .then(response => {
       document.getElementById('spinner').style.display = "none";
-        Swal.fire('Hi', 'Thank You have a nice trip', 'success');
+        Swal.fire('Thank You!', 'We will contact you about confirmations', 'success');
       this.router.navigate(['/userhome']);
       })
     .catch((error) => {

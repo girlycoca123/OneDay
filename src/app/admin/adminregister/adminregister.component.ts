@@ -31,7 +31,7 @@ export class AdminregisterComponent implements OnInit {
   register() {
     document.getElementById('spinner').style.display = "block";
     axios.post("https://btal-ride.herokuapp.com/api/admin/register", this.form.value).then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       window.localStorage.setItem('admin_token',res.data.access_token);
       document.getElementById('spinner').style.display ="none";
       return this.router.navigate(['/admin/user-profile']);

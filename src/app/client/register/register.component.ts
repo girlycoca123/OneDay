@@ -63,7 +63,9 @@ export class RegisterComponent implements OnInit {
       document.getElementById('spinner').style.display = "none";
       return this.router.navigate(['/userhome']);
     }).catch(err => {
-      Swal.fire('Oppss','Please be aware in your contact number, must be 11 digits','warning');
+      Swal.fire('Oppss','Something went wrong, please re-check inputs','warning');
+      document.getElementById('spinner').style.display = "none";
+
     })
   }
 

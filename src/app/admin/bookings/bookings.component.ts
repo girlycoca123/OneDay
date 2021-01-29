@@ -15,9 +15,9 @@ export class BookingsComponent implements OnInit {
 
   bookings: Booking[];
 
-constructor(
-  private bookingService: BookingsService,
-  private router: Router
+  constructor(
+    private bookingService: BookingsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,17 +26,18 @@ constructor(
 
   hidden = true;
 
-  getBookings(){
+  getBookings() {
     document.getElementById('spinner').style.display = "block";
-    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token')); 
+    const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
     axios.get("https://btal-ride.herokuapp.com/api/client-booking", { headers: { Authorization: AuthStr } })
       .then(response => {
         document.getElementById('spinner').style.display = "none";
         this.bookings = response.data;
         console.log(this.bookings);
       })
-    .catch((error) => {
-     console.log('error ' + error);
+      .catch((error) => {
+        document.getElementById('spinner').style.display = "none";
+        console.log('error ' + error);
       });
 
   }
@@ -52,7 +53,7 @@ constructor(
     }).then((result) => {
       if (result.value) {
         const AuthStr = 'Bearer '.concat(window.localStorage.getItem('admin_token'));
-        axios.delete("https://btal-ride.herokuapp.com/api/client-booking/"+id, { headers: { Authorization: AuthStr } })
+        axios.delete("https://btal-ride.herokuapp.com/api/client-booking/" + id, { headers: { Authorization: AuthStr } })
           .then(response => {
             Swal.fire(
               'Removed!',
@@ -74,5 +75,5 @@ constructor(
     })
   }
 
-  
+
 }
