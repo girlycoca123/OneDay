@@ -28,6 +28,7 @@ import { LandingPageComponent } from './client/landing-page/landing-page.compone
 import { AboutNotLoginComponent } from './client/about-not-login/about-not-login.component';
 
 import { StoryComponent } from './client/story/story.component';
+import { UnauthorizedGuard } from './guards/unauthorized.guard';
 
 // import { BusinfoComponent } from './client/businfo/businfo.component';
 
@@ -36,9 +37,9 @@ import { StoryComponent } from './client/story/story.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate :[UnauthorizedGuard] },
 
-  {path : 'client/landing-page', component: LandingPageComponent},
+  {path : 'client/landing-page', component: LandingPageComponent,  canActivate :[ClientGuard]},
   {path: 'about', component: AboutNotLoginComponent},
   {path: 'client/history', component:HistoryComponent},
   { path:'userhome', component:UserHomeComponent, canActivate :[ClientGuard]},
